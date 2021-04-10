@@ -8,3 +8,6 @@ Trabalhando com SPRING DATA JPA
     </dependency>
 3.  Em seguida, em application.properties, colocar as configurações para conexão com o BD. Apesar de ser um BD em memória,
     o processo é o mesmo para qualquer BD. Vide configuração no arquivo.
+4.  Como o H2 é um banco em memória, o SB fornece uma opção para rodar um script sql ao carregar o banco e montar toda a
+    estrutura de dados necessária.
+    4.1.  Dentro de resources, criar um arquivo data.sql
