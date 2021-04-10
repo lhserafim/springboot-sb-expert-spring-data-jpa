@@ -1,2 +1,10 @@
 Trabalhando com SPRING DATA JPA
-1.  Partindo de um arquivo zerado, ou seja, apenas com as configurações básicas do SB
+1.  Criar um projeto Maven e adicionar o parent, dependencies e build necessários
+2.  Como vamos trabalhar com um banco em memória (H2), adicioar a dependência
+    Ex.:
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+    </dependency>
+3.  Em seguida, em application.properties, colocar as configurações para conexão com o BD. Apesar de ser um BD em memória,
+    o processo é o mesmo para qualquer BD. Vide configuração no arquivo.
