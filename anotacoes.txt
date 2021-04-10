@@ -1,0 +1,2 @@
+Trabalhando com SPRING DATA JPA
+1.  Partindo de um arquivo zerado, ou seja, apenas com as configurações básicas do SB
