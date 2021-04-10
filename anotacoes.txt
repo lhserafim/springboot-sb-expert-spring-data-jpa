@@ -10,6 +10,39 @@ Trabalhando com SPRING DATA JPA
     o processo é o mesmo para qualquer BD. Vide configuração no arquivo.
 4.  Como o H2 é um banco em memória, o SB fornece uma opção para rodar um script sql ao carregar o banco e montar toda a
     estrutura de dados necessária.
-    4.1.  Dentro de resources, criar um arquivo data.sql
+    4.1.  Dentro de resources, criar um arquivo data.sql com o script sql desejado (ex. create table)
 5.  Tendo o banco configurado e o script p/ criar as minhas tabelas, vou criar as classes de entidade correspondentes
     as tabelas. Ver domain.entity: Cliente, Produto, Pedido e ItemPedido
+6.  Trabalhando com DAO (Data Access Object) - SEM JPA
+    6.1.  Dentro do meu domain, criar uma package repository e em seguida a classe desejada
+    6.2.  Anotar a classe como @Repository, para que o SB leia e carregue corretamente no container
+        6.2.1.  Ao anotar com @Repository, além de carregar no container, o SB vai traduzir as exceções de BD e trazê-las
+                "bonitinhas" para o java
+    6.3.  Criar o método para salvar os dados. Como não estamos utilizando JPA (ainda), vou utilizar uma classe JdbcTemplate
+          que vai me auxiliar na persistencia dos dados na base.
+        6.3.1.  No meu método, colocar a chamada do .update()
+                Ex.:
+                jdbcTemplate.update(INSERT, new Object[]{cliente.getNome()});
+    6.4.  Para poder testar, como ainda não temos uma API, vou criar um CommandLineRunner p/ executar o método criado em Clientes
+    6.5.  Para poder fazer uma query, preciso criar os construtores (padrão e com parâmetros) na classe que eu quero fazer a query,
+          neste caso foi a classe Cliente. Isto pq vou pegar o resultSet do meu RowMapper e criar uma nova instancia de Cliente,
+          passando os campos mapeados.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
