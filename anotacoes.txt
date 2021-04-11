@@ -41,6 +41,10 @@ Trabalhando com SPRING DATA JPA
           Para evitar conflitos, o arquivo foi renomeado para desativado_data.sql
     7.4.  No meu Repository, fazer a injeção do EntityManager @Autowired private EntityManager entityManager;
     7.5.  Nos métodos, fazer a anotação @Transactional. É uma necessidade do EntityManager. Importante, precisa ser do pacote: import org.springframework.transaction.annotation.Transactional;
+    DICA! Usando o readOnly a pesquisa fica mais rápida pq o JPA não faz cache: @Transactional(readOnly = true)
+    7.6.  Utilizar o EntityManager para fazer as operações de persist(), merge(), remove(), find() e createQuery()
+        7.6.1.  Quando for uma operação de createQuery, preciso montar o JPQL. Caso precise passar parâmetros, preciso criar uma query tipada
+                Exemplos no arquivo Clientes.java
 
 
 
