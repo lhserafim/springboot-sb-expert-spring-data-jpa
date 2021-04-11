@@ -32,6 +32,10 @@ Trabalhando com SPRING DATA JPA
     RESUMO: Para trabalhar com jdbcTemplate e fazer um CRUD. Preciso adicionar a dependência ao meu POM, depois no meu repository
             chamar os métodos update(), passando o statement e um objeto new Object[]{...}) ou query(), passando o statement e um
             RowMapper(), para fazer o mapeamento do retorno da query e atribuir a classe.
+7.  Trabalhando com DAO (Data Access Object) - COM JPA
+    7.1.  Para trabalhar com JPA, a primeira coisa que devemos fazer é adicionar as anotações @Entity e @Table nas classes de entidades
+          Isso fará com que o SB escaneie esta classe e coloque no container como uma entidade
+    7.2.  Em seguida, adicionar as anotações nas colunas: @Id e @GeneratedValue nas colunas PK e @Column em todas as demais
 
 
 

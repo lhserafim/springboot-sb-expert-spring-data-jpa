@@ -1,7 +1,17 @@
 package org.alvorada.tec.domain.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "CLIENTE")
 public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // O h2 utiliza esta regra p/ controlar a sequence
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "nome", length = 100)
     private String nome;
 
     // Os construtores foram criados p/ que eu possa rodar jdbcTemplate.query
