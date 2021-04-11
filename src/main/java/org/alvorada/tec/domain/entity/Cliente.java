@@ -3,7 +3,7 @@ package org.alvorada.tec.domain.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CLIENTE")
+@Table(name = "cliente")
 public class Cliente {
 
     @Id

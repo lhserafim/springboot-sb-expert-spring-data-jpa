@@ -5,15 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class Clientes {
+public class ClientesJdbc {
 
     // Constantes em caixa ALTA
     private static String INSERT = "INSERT INTO cliente (nome) values (?)"; // ? é um placeholder
@@ -24,13 +22,10 @@ public class Clientes {
     @Autowired // p/ fazer a injeção
     private JdbcTemplate jdbcTemplate; // Usando pois não estou com o JPA configurado
 
-    @Autowired // p/ fazer a injeção (IOC)
-    private EntityManager entityManager;
-
-    // Necessário adicionar a dependência no Maven para esta annotation import org.springframework.transaction.annotation.Transactional;
-    @Transactional // o EntityManager precisa que eu informe que o método é transacional
     public Cliente salvar(Cliente cliente) {
-        entityManager.persist(cliente);
+        // o update permite que eu faça insert, update e delete
+        // Estou passando 2 param. O segundo é um array de objetos para poder passar o nome. Dou o getNome no objeto recebido
+        jdbcTemplate.update(INSERT, new Object[]{cliente.getNome()});
         return cliente;
     }
 

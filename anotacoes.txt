@@ -13,7 +13,7 @@ Trabalhando com SPRING DATA JPA
     4.1.  Dentro de resources, criar um arquivo data.sql com o script sql desejado (ex. create table)
 5.  Tendo o banco configurado e o script p/ criar as minhas tabelas, vou criar as classes de entidade correspondentes
     as tabelas. Ver domain.entity: Cliente, Produto, Pedido e ItemPedido
-6.  Trabalhando com DAO (Data Access Object) - SEM JPA
+6.  Trabalhando com DAO (Data Access Object) - SEM JPA - Repository renomeado p/ ClientesJdbc
     6.1.  Dentro do meu domain, criar uma package repository e em seguida a classe desejada
     6.2.  Anotar a classe como @Repository, para que o SB leia e carregue corretamente no container
         6.2.1.  Ao anotar com @Repository, além de carregar no container, o SB vai traduzir as exceções de BD e trazê-las
@@ -36,7 +36,11 @@ Trabalhando com SPRING DATA JPA
     7.1.  Para trabalhar com JPA, a primeira coisa que devemos fazer é adicionar as anotações @Entity e @Table nas classes de entidades
           Isso fará com que o SB escaneie esta classe e coloque no container como uma entidade
     7.2.  Em seguida, adicionar as anotações nas colunas: @Id e @GeneratedValue nas colunas PK e @Column em todas as demais
-
+    7.3.  Quando trabalhamos com JPA, uma vez que informamos quais são as entidades, o próprio já cria as tabelas no H2
+          e desta forma não necessitamos do arquivo resources/data.sql com o script de criação de tabelas.
+          Para evitar conflitos, o arquivo foi renomeado para desativado_data.sql
+    7.4.  No meu Repository, fazer a injeção do EntityManager @Autowired private EntityManager entityManager;
+    7.5.  Nos métodos, fazer a anotação @Transactional. É uma necessidade do EntityManager. Importante, precisa ser do pacote: import org.springframework.transaction.annotation.Transactional;
 
 
 
