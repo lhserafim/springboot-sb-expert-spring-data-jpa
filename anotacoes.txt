@@ -27,6 +27,12 @@ Trabalhando com SPRING DATA JPA
     6.5.  Para poder fazer uma query, preciso criar os construtores (padrão e com parâmetros) na classe que eu quero fazer a query,
           neste caso foi a classe Cliente. Isto pq vou pegar o resultSet do meu RowMapper e criar uma nova instancia de Cliente,
           passando os campos mapeados.
+    DICA! Quando percebemos que estamos reutilizando alguma coisa, usar Extract Method do IntelliJ e transformá-lo em um método
+          separado, como o exemplo do: obterClienteMapper()
+    RESUMO: Para trabalhar com jdbcTemplate e fazer um CRUD. Preciso adicionar a dependência ao meu POM, depois no meu repository
+            chamar os métodos update(), passando o statement e um objeto new Object[]{...}) ou query(), passando o statement e um
+            RowMapper(), para fazer o mapeamento do retorno da query e atribuir a classe.
+
 
 
 

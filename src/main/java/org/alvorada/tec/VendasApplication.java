@@ -22,12 +22,40 @@ public class VendasApplication {
             clientes.salvar(cliente);
             */
             // Menos verboso
+            System.out.println("Lista Inicial");
             clientes.salvar(new Cliente("Luiz"));
             clientes.salvar(new Cliente("Thiago"));
             clientes.salvar(new Cliente("Daniela"));
 
             List<Cliente> todosClientes = clientes.obterTodos();
             todosClientes.forEach(System.out::println);
+
+
+            todosClientes.forEach(c -> {
+                c.setNome(c.getNome() + " atualizado");
+                clientes.atualizar(c); // efetiva a atualização
+            });
+            System.out.println("Lista Atualizada");
+            todosClientes = clientes.obterTodos();
+            todosClientes.forEach(System.out::println);
+
+            System.out.println("Pesquisar por nome");
+            clientes.buscarPorNome("Thi").forEach(System.out::println);
+
+            System.out.println("Excluir por cliente.id");
+            clientes.obterTodos().forEach(c -> {
+                clientes.deletar(c);
+            });
+
+            todosClientes = clientes.obterTodos();
+            todosClientes.forEach(System.out::println);
+
+            if (todosClientes.isEmpty()) {
+                System.out.println("Lista vazia");
+            } else {
+                todosClientes.forEach(System.out::println);
+            }
+
         };
     }
 
