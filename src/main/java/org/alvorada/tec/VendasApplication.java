@@ -16,38 +16,32 @@ public class VendasApplication {
     @Bean
     public CommandLineRunner init(@Autowired Clientes clientes) { // Aqui estou injetando a minha classe Clientes (de repository)
         return args -> {
-            /* Mais verboso...
-            Cliente cliente = new Cliente(); // Aqui estou criando uma nova instancia de Cliente (de entity)
-            cliente.setNome("Luiz");
-            clientes.salvar(cliente);
-            */
-            // Menos verboso
             System.out.println("Adicionando Clientes");
-            clientes.salvar(new Cliente("Luiz"));
-            clientes.salvar(new Cliente("Thiago"));
-            clientes.salvar(new Cliente("Daniela"));
+            clientes.save(new Cliente("Luiz"));
+            clientes.save(new Cliente("Thiago"));
+            clientes.save(new Cliente("Daniela"));
 
-            List<Cliente> todosClientes = clientes.obterTodos();
+            List<Cliente> todosClientes = clientes.findAll();
             todosClientes.forEach(System.out::println);
 
 
             todosClientes.forEach(c -> {
                 c.setNome(c.getNome() + " atualizado");
-                clientes.atualizar(c); // efetiva a atualização
+                clientes.save(c); // efetiva a atualização
             });
             System.out.println("Lista Atualizada");
-            todosClientes = clientes.obterTodos();
+            todosClientes = clientes.findAll();
             todosClientes.forEach(System.out::println);
 
             System.out.println("Pesquisar por nome");
-            clientes.buscarPorNome("Thi").forEach(System.out::println);
+            clientes.findByNomeLike("Thi").forEach(System.out::println);
 
             System.out.println("Excluir por cliente.id");
-            clientes.obterTodos().forEach(c -> {
-                clientes.deletar(c);
+            clientes.findAll().forEach(c -> {
+                clientes.delete(c);
             });
 
-            todosClientes = clientes.obterTodos();
+            todosClientes = clientes.findAll();
             todosClientes.forEach(System.out::println);
 
             if (todosClientes.isEmpty()) {

@@ -45,7 +45,23 @@ Trabalhando com SPRING DATA JPA
     7.6.  Utilizar o EntityManager para fazer as operações de persist(), merge(), remove(), find() e createQuery()
         7.6.1.  Quando for uma operação de createQuery, preciso montar o JPQL. Caso precise passar parâmetros, preciso criar uma query tipada
                 Exemplos no arquivo Clientes.java
-
+        7.6.2.  Cuidado com as transações transientes. As vezes ao tentar fazer uma operação de delete, a instancia pode estar transiente. Se isso ocorrer, fazer o merge antes
+                conforme exemplo na classe Clientes e no método deletar
+8.  Trabalhando com o JpaRepository - MELHOR IMPLEMENTAÇÃO
+    8.1.  A classe Clientes foi refatorada para se tornar um JpaRepository
+    8.2.  Para implementarmos, NÃO DEVEMOS ter a anotação @Repository
+    8.3.  Além disso a CLASS tem que virar uma INTERFACE e extender o JpaRepository
+        8.3.1.  JpaRepository recebe 2 parâmetros. 1 -> A Entidade; 2 -> O Tipo de dado do ID da entidade
+                Ex.:
+                public interface Clientes extends JpaRepository<Cliente, Integer> { }
+    8.4.  O JpaRepository já tem dentro dele (encapsulado) o EntityManager. É por isso que na implementação não usamos explicitamente o EM
+    8.5.  Outras coisas que o JpaRepository já tem encapsulado são os métodos para salvar, obterTodos, etc. Desta forma,
+          eu não preciso escrever uma linha de código dentro da interface. Eu simplesmente chamo estes métodos dentro da
+          classe ou service que está importando esta interface que extende o JpaRepository
+          Ex.: save(); findAll(); delete();
+        8.5.1.  IMPORTANTE! Para poder usar o save() e o delete() eu precisei adicionar a dependência do maven CrudRepository.
+                Isto porque o JpaRepository extends PagingAndSortingRepository que extends CrudRepository.
+        8.5.2.  Alguns métodos mais elaborados como findByNomeLike, precisam ser implementado. Eles são chamados de Query Methods
 
 
 

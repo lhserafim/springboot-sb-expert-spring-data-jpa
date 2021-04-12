@@ -13,3 +13,7 @@ i
 9src/main/java/org/alvorada/tec/domain/entity/Produto.java,1/5/1551c596977484f0ef1c8d8b0a67effa41d34787
 l
 <src/main/java/org/alvorada/tec/domain/entity/ItemPedido.java,b/e/be59ad30848f41b8f0009cac9d04b89e477e331a
+v
+Fsrc/main/java/org/alvorada/tec/VendasApplicationJdbcEntityManager.java,3/2/3205617dc5c992b7cbf04ec215f74b7a088b57ad
+{
+Ksrc/main/java/org/alvorada/tec/domain/repository/ClientesEntityManager.java,b/1/b15974611df52bc4709e1da6fd71a92968957aec
