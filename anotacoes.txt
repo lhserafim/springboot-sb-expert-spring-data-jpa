@@ -62,7 +62,17 @@ Trabalhando com SPRING DATA JPA
         8.5.1.  IMPORTANTE! Para poder usar o save() e o delete() eu precisei adicionar a dependência do maven CrudRepository.
                 Isto porque o JpaRepository extends PagingAndSortingRepository que extends CrudRepository.
         8.5.2.  Alguns métodos mais elaborados como findByNomeLike, precisam ser implementado. Eles são chamados de Query Methods
-
+9.  Query Methods. São métodos que se transformam em uma query. A declaração do nome do método deve respeitar uma certa convenção
+    9.1.  Utilizando uma convenção de nome, posso informar no meu método os parâmetros que quero usar para que o Jpa transforme
+          o meu método em uma query e assim eu não precise escrever um JPQL.
+          Os parâmetros precisam ser passados na ordem que são declarados no nome do método
+          Ex.:
+          List<Cliente> findByNomeOrId(String nome, Integer id);
+          List<Cliente> findByNomeOrIdOrderById(String nome, Integer id);
+          Cliente findOneByCpfOrCnpj(String cpf, String cnpj);
+          boolean existsByNome(String nome);
+    9.2.  Mais informações: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
+    
 
 
 
