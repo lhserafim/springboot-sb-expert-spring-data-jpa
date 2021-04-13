@@ -77,6 +77,9 @@ public class VendasApplication {
             System.out.println(cliente);
             System.out.println(cliente.getPedidos());
 
+            // Outra forma de recuperar os pedidos. Usando o query method
+            pedidos.findByCliente(fulano).forEach(System.out::println);
+
             System.out.println(LocalDateTime.now());
         };
     }
