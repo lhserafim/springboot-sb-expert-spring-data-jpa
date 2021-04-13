@@ -20,6 +20,8 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     // Outros exemplos de query methods
     List<Cliente> findByNomeOrId(String nome, Integer id); // Os parâmetros precisam ser passados na ordem que são declarados no nome do método
     List<Cliente> findByNomeOrIdOrderById(String nome, Integer id);
+
+    // Este exemplo é um método e não um query method!
     boolean existsByNome(String nome);
 
     // @Query
@@ -29,5 +31,10 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     @Query(" DELETE FROM Cliente c WHERE c.nome = :nome")
     @Modifying
     void deletarPorNome(@Param("nome") String nome);
+
+    // Fazendo consultas com entidades relacionadas via JPA
+    // Veja que eu só coloco FETCH e o c.pedidos (que é como eu mapeei na entidade Cliente: private Set<Pedido> pedidos;)
+    @Query("SELECT c FROM Cliente c LEFT JOIN FETCH c.pedidos WHERE c.id = :id")
+    Cliente findClienteFetchPedidos(@Param("id") Integer id);
 
 }

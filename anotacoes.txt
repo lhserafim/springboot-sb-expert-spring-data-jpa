@@ -71,7 +71,6 @@ Trabalhando com SPRING DATA JPA
           List<Cliente> findByNomeOrId(String nome, Integer id);
           List<Cliente> findByNomeOrIdOrderById(String nome, Integer id);
           Cliente findOneByCpfOrCnpj(String cpf, String cnpj);
-          boolean existsByNome(String nome);
     9.2.  Mais informações: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
 10. @Query. Com esta anotação eu posso escrever querys mais complexas. É a maneira de consultar mais indicada pela documentação de
     referencia do SB.
@@ -109,9 +108,19 @@ Trabalhando com SPRING DATA JPA
                      return pedidos;
                  }
         DICA! De preferencia a LocalDate ao invés de Date e/ou Calendar. O LocalDate é mais simples de trabalhar
-13.  Criar os repositorys: Produtos, Pedidos
-
-
+        Ex.:
+        Pegando a data: LocalDate.now()
+        Pegando a data/hora LocalDateTime.now()
+13.  Criar os repositorys: Produtos, Pedidos e ItensPedido. A implementação é padrão, apenas conforme ex. abaixo
+     Ex.:
+     public interface ItensPedido extends JpaRepository<ItemPedido, Integer> { }
+14.  Fazendo consultas com relacionamento JPA
+    14.1.  Com @Query. Posso criar um método dentro do meu repository.
+        14.1.1.  Posso fazer a query usando JPQL
+        14.1.2.  Como a entidade já está mapeada, não preciso fazer os joins, apenas colocar o fetch, conforme exemplo
+                 Ex.: Veja que eu só coloco FETCH e o c.pedidos (que é como eu mapeei na entidade Cliente: private Set<Pedido> pedidos;)
+                 @Query("SELECT c FROM Cliente c LEFT JOIN FETCH c.pedidos WHERE c.id = :id")
+                 Cliente findClienteFetchPedidos(@Param("id") Integer id);
 
 
 

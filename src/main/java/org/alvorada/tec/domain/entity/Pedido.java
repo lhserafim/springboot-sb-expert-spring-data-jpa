@@ -23,7 +23,7 @@ public class Pedido {
     private LocalDate dataPedido;
 
     // Fazendo o mapeamento de um BigDecimal, com precisão de 2
-    @Column(name = "total", length = 20, precision = 2)
+    @Column(name = "total", precision = 20, scale = 2) // 20,2
     private BigDecimal total;
 
     // Note que só consigo criar este mapeamento após fazer o mapeamento da entidade many. Pois preciso criar o
@@ -67,5 +67,14 @@ public class Pedido {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", dataPedido=" + dataPedido +
+                ", total=" + total +
+                '}';
     }
 }
