@@ -1,6 +1,7 @@
 package org.alvorada.tec.domain.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "cliente")
@@ -13,6 +14,17 @@ public class Cliente {
 
     @Column(name = "nome", length = 100)
     private String nome;
+
+    // OPCIONAL para este contexto!
+    // Caso eu queira trazer todos os pedidos de um cliente, eu posso adicionar o mapeamento abaixo
+    // Usei Set, mas poderia usar List ou Collection. O Set garante que não terei pedidos repetidos na lista + indicado
+    // O mappedBy deve referenciar a propriedade que eu tenho em Pedido que é a FK de cliente. Ex: private Cliente cliente;
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidos;
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
 
     // Os construtores foram criados p/ que eu possa rodar jdbcTemplate.query
     public Cliente() {

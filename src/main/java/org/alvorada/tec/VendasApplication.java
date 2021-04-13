@@ -38,6 +38,9 @@ public class VendasApplication {
             System.out.println("Pesquisar por nome");
             clientes.findByNomeLike("Thi").forEach(System.out::println);
 
+            System.out.println("Pesquisar por nome 2");
+            clientes.encontrarPorNome("Dani").forEach(System.out::println);
+
             System.out.println("Excluir por cliente.id");
             clientes.findAll().forEach(c -> {
                 clientes.delete(c);

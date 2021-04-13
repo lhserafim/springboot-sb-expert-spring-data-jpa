@@ -2,6 +2,9 @@ package org.alvorada.tec.domain.repository;
 
 import org.alvorada.tec.domain.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -18,4 +21,13 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     List<Cliente> findByNomeOrId(String nome, Integer id); // Os parâmetros precisam ser passados na ordem que são declarados no nome do método
     List<Cliente> findByNomeOrIdOrderById(String nome, Integer id);
     boolean existsByNome(String nome);
+
+    // @Query
+    @Query(value = "SELECT * FROM cliente WHERE nome LIKE '%:nome%' ", nativeQuery = true)
+    List<Cliente> encontrarPorNome(@Param("nome") String nome);
+
+    @Query(" DELETE FROM Cliente c WHERE c.nome = :nome")
+    @Modifying
+    void deletarPorNome(@Param("nome") String nome);
+
 }

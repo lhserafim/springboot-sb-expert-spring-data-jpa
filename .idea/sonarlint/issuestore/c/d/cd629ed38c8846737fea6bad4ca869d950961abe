@@ -1,5 +1,5 @@
 
 N
-java:S1602(",Remove useless curly braces around statement(îí±ıÿÿÿÿ8²Çó•Œ/
+java:S1612-",Replace this lambda with a method reference.(îí±ıÿÿÿÿ8ÀÚè«Œ/
 N
-java:S1612(",Replace this lambda with a method reference.(îí±ıÿÿÿÿ8ÀÚè«Œ/
+java:S1602-",Remove useless curly braces around statement(îí±ıÿÿÿÿ8²Çó•Œ/

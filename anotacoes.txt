@@ -36,6 +36,7 @@ Trabalhando com SPRING DATA JPA
     7.1.  Para trabalhar com JPA, a primeira coisa que devemos fazer é adicionar as anotações @Entity e @Table nas classes de entidades
           Isso fará com que o SB escaneie esta classe e coloque no container como uma entidade
     7.2.  Em seguida, adicionar as anotações nas colunas: @Id e @GeneratedValue nas colunas PK e @Column em todas as demais
+          O pacote é o javax.persistence import javax.persistence.*;
     7.3.  Quando trabalhamos com JPA, uma vez que informamos quais são as entidades, o próprio já cria as tabelas no H2
           e desta forma não necessitamos do arquivo resources/data.sql com o script de criação de tabelas.
           Para evitar conflitos, o arquivo foi renomeado para desativado_data.sql
@@ -72,9 +73,42 @@ Trabalhando com SPRING DATA JPA
           Cliente findOneByCpfOrCnpj(String cpf, String cnpj);
           boolean existsByNome(String nome);
     9.2.  Mais informações: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
-    
-
-
+10. @Query. Com esta anotação eu posso escrever querys mais complexas. É a maneira de consultar mais indicada pela documentação de
+    referencia do SB.
+    10.1. Basta informar a Query que eu desejo, no formato JPQL ou SQL (vide dica a seguir) e passar os parametros.
+    DICA! Caso eu queira montar uma query nativa, ao invés de um JPQL em um @Query, eu posso setar o flag para true, conforme exemplo
+    EX.:
+    public interface UserRepository extends JpaRepository<User, Long> {
+      @Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = :emailAddress", nativeQuery = true)
+      User findByEmailAddress(@Param("emailAddress") String emailAddress);
+    }
+    10.2. Também posso utilizar o @Query p/ fazer modificações como um delete por exemplo. Para isso preciso adicionar a anotação @Modifying
+11.  Para exibir o SQL que está sendo gerado/executado pelo Hibernate(JPA) devemos fazer o setup no arquivo de configuração
+     application.properties. Vide arquivo.
+     Ex.:
+     spring.jpa.properties.hibernate.show_sql=true
+     spring.jpa.properties.hibernate.format_sql=true
+12.  Mapeamentos
+    12.1.  @ManyToOne: Normalmente p/ mapear uma FK. Usando no relacionamento muitos p/ um. Informar também o @JoinColumn
+        12.1.1.  No @JoinColumn, informar o name da coluna de FK da entidade que estou mapeando (da minha entidade many).
+                 Ex.:
+                 @JoinColumn(name = "cliente_id")
+    12.2.  @OneToMany: Este mapeamento trará uma lista de itens (aqui no caso pedidos) para a entidade (Cliente)
+        12.2.1.  Informar o mappedBy, que é o nome da propriedade que foi criada na entidade "many" que leva a FK
+                 da minha entidade atual.
+                 Ex.:
+                 Na entidade many, eu tenho a FK criada para a minha entidade "one"
+                 private Cliente cliente;
+                 Então na minha entidade "one" eu preciso colocar este nome da propriedade
+                 @OneToMany(mappedBy = "cliente")
+                 private Set<Pedido> pedidos;
+        DICA! Usei Set, mas poderia usar List ou Collection. O Set garante que não terei pedidos repetidos na lista + indicado
+        12.2.2.  Após criar o mapeamento, adicionar o getPedidos para este atributo
+                 Ex.:
+                 public Set<Pedido> getPedidos() {
+                     return pedidos;
+                 }
+        DICA! De preferencia a LocalDate ao invés de Date e/ou Calendar. O LocalDate é mais simples de trabalhar
 
 
 

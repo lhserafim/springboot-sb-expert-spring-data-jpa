@@ -17,3 +17,5 @@ v
 Fsrc/main/java/org/alvorada/tec/VendasApplicationJdbcEntityManager.java,3/2/3205617dc5c992b7cbf04ec215f74b7a088b57ad
 {
 Ksrc/main/java/org/alvorada/tec/domain/repository/ClientesEntityManager.java,b/1/b15974611df52bc4709e1da6fd71a92968957aec
+h
+8src/main/java/org/alvorada/tec/domain/entity/Pedido.java,8/4/84fa9025ca73c6c665cb88dbe8c462f53dd1298d

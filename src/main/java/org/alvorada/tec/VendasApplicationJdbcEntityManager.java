@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
-@SpringBootApplication
+//Comentei p/ não ficar executando a classe abaixo
+//@SpringBootApplication
 public class VendasApplicationJdbcEntityManager {
 
     @Bean // tiver que mudar o nome do bean p/ evitar conflitos
