@@ -109,7 +109,7 @@ Trabalhando com SPRING DATA JPA
                      return pedidos;
                  }
         DICA! De preferencia a LocalDate ao invés de Date e/ou Calendar. O LocalDate é mais simples de trabalhar
-
+13.  Criar os repositorys: Produtos, Pedidos
 
 
 
