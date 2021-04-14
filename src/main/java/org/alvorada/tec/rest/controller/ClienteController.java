@@ -35,6 +35,9 @@ public class ClienteController {
         }
         // Retornando um 404
         return ResponseEntity.notFound().build();
+
+        // FAZENDO EM UMA LINHA
+        //return clientes.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Com o POST abaixo não preciso mais da CommandLineRunner p/ criar um cliente

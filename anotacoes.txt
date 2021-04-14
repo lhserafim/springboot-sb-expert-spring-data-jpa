@@ -188,8 +188,16 @@ Trabalhando com SPRING DATA JPA
                 ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
                 Example example = Example.of(filtro, matcher);
                 return ResponseEntity.ok(clientes.findAll(example));
-
-
+16. Refaturando a ClienteController em ClienteRestController
+    16.1. Ao invés de usar o @Controller é melhor usar a @RestController, pois essa dispensa o uso da @ResponseBody,
+          pois essa anotação já tem @Controller e @ResponseBody
+    16.2. Outra coisa que foi refatorada no código foi a remoção do ResponseEntity, desta forma foram necessários adicionar a anotação
+          @ResponseStatus() em cima do método, passando o HttpStatus de acordo com a resposta desejada.
+          Obs. Se eu não informar nada, ele vai voltar 200 para sucesso
+          Ex.:
+          @ResponseStatus(HttpStatus.CREATED) // volta 201
+          @ResponseStatus(HttpStatus.NOT_FOUND) // volta 404
+    16.3. Para dar o retorno correto quando houver um erro, usar orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 
 
 
