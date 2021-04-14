@@ -82,45 +82,75 @@ Trabalhando com SPRING DATA JPA
       User findByEmailAddress(@Param("emailAddress") String emailAddress);
     }
     10.2. Também posso utilizar o @Query p/ fazer modificações como um delete por exemplo. Para isso preciso adicionar a anotação @Modifying
-11.  Para exibir o SQL que está sendo gerado/executado pelo Hibernate(JPA) devemos fazer o setup no arquivo de configuração
-     application.properties. Vide arquivo.
-     Ex.:
-     spring.jpa.properties.hibernate.show_sql=true
-     spring.jpa.properties.hibernate.format_sql=true
-12.  Mapeamentos
-    12.1.  @ManyToOne: Normalmente p/ mapear uma FK. Usando no relacionamento muitos p/ um. Informar também o @JoinColumn
-        12.1.1.  No @JoinColumn, informar o name da coluna de FK da entidade que estou mapeando (da minha entidade many).
-                 Ex.:
-                 @JoinColumn(name = "cliente_id")
-    12.2.  @OneToMany: Este mapeamento trará uma lista de itens (aqui no caso pedidos) para a entidade (Cliente)
-        12.2.1.  Informar o mappedBy, que é o nome da propriedade que foi criada na entidade "many" que leva a FK
-                 da minha entidade atual.
-                 Ex.:
-                 Na entidade many, eu tenho a FK criada para a minha entidade "one"
-                 private Cliente cliente;
-                 Então na minha entidade "one" eu preciso colocar este nome da propriedade
-                 @OneToMany(mappedBy = "cliente")
-                 private Set<Pedido> pedidos;
+11. Para exibir o SQL que está sendo gerado/executado pelo Hibernate(JPA) devemos fazer o setup no arquivo de configuração
+    application.properties. Vide arquivo.
+    Ex.:
+    spring.jpa.properties.hibernate.show_sql=true
+    spring.jpa.properties.hibernate.format_sql=true
+12. Mapeamentos
+    12.1. @ManyToOne: Normalmente p/ mapear uma FK. Usando no relacionamento muitos p/ um. Informar também o @JoinColumn
+        12.1.1. No @JoinColumn, informar o name da coluna de FK da entidade que estou mapeando (da minha entidade many).
+                Ex.:
+                @JoinColumn(name = "cliente_id")
+    12.2. @OneToMany: Este mapeamento trará uma lista de itens (aqui no caso pedidos) para a entidade (Cliente)
+        12.2.1. Informar o mappedBy, que é o nome da propriedade que foi criada na entidade "many" que leva a FK
+                da minha entidade atual.
+                Ex.:
+                Na entidade many, eu tenho a FK criada para a minha entidade "one"
+                private Cliente cliente;
+                Então na minha entidade "one" eu preciso colocar este nome da propriedade
+                @OneToMany(mappedBy = "cliente")
+                private Set<Pedido> pedidos;
         DICA! Usei Set, mas poderia usar List ou Collection. O Set garante que não terei pedidos repetidos na lista + indicado
-        12.2.2.  Após criar o mapeamento, adicionar o getPedidos para este atributo
-                 Ex.:
-                 public Set<Pedido> getPedidos() {
-                     return pedidos;
-                 }
+        12.2.2. Após criar o mapeamento, adicionar o getPedidos para este atributo
+                Ex.:
+                public Set<Pedido> getPedidos() {
+                    return pedidos;
+                }
         DICA! De preferencia a LocalDate ao invés de Date e/ou Calendar. O LocalDate é mais simples de trabalhar
         Ex.:
         Pegando a data: LocalDate.now()
         Pegando a data/hora LocalDateTime.now()
-13.  Criar os repositorys: Produtos, Pedidos e ItensPedido. A implementação é padrão, apenas conforme ex. abaixo
-     Ex.:
-     public interface ItensPedido extends JpaRepository<ItemPedido, Integer> { }
-14.  Fazendo consultas com relacionamento JPA
-    14.1.  Com @Query. Posso criar um método dentro do meu repository.
-        14.1.1.  Posso fazer a query usando JPQL
-        14.1.2.  Como a entidade já está mapeada, não preciso fazer os joins, apenas colocar o fetch, conforme exemplo
-                 Ex.: Veja que eu só coloco FETCH e o c.pedidos (que é como eu mapeei na entidade Cliente: private Set<Pedido> pedidos;)
-                 @Query("SELECT c FROM Cliente c LEFT JOIN FETCH c.pedidos WHERE c.id = :id")
-                 Cliente findClienteFetchPedidos(@Param("id") Integer id);
+13. Criar os repositorys: Produtos, Pedidos e ItensPedido. A implementação é padrão, apenas conforme ex. abaixo
+    Ex.:
+    public interface ItensPedido extends JpaRepository<ItemPedido, Integer> { }
+14. Fazendo consultas com relacionamento JPA
+    14.1. Com @Query. Posso criar um método dentro do meu repository.
+        14.1.1. Posso fazer a query usando JPQL
+        14.1.2. Como a entidade já está mapeada, não preciso fazer os joins, apenas colocar o fetch, conforme exemplo
+                Ex.: Veja que eu só coloco FETCH e o c.pedidos (que é como eu mapeei na entidade Cliente: private Set<Pedido> pedidos;)
+                @Query("SELECT c FROM Cliente c LEFT JOIN FETCH c.pedidos WHERE c.id = :id")
+                Cliente findClienteFetchPedidos(@Param("id") Integer id);
+------------------------------------------------------------------------------------------------------------------------
+                                    DESENVOLVIMENTO DE UMA API RESTFUL
+------------------------------------------------------------------------------------------------------------------------
+15. Criação da @Controller
+    15.1. Adicionar a dependência do spring-boot-starter-web (se necessário)
+    15.2. Criar uma classe Controller dentro de /rest/controller
+    15.3. Anotar a classe como @Controller
+    15.4. Definir uma URL base para a API é uma boa prática. Antes do nome da classe usar @RequestMapping("/api/clientes")
+        15.4.1. Este valor é opcional. Posso definí-lo diretamente em cima dos métodos da controller
+    15.5. Injetar os repositorys ou services na controller
+        15.5.1. Aqui foi criado um construtor p/ fazer a injeção, mas na SOMOS usamos @RequiredArgsConstructor
+    15.6. Criando um método GET: @GetMapping
+        15.6.1. No método colocar a anotação @GetMapping("consulta-cliente-id/{id}"), seguida do path, com ou sem parâmetros,
+                para identificar qué será operação HTTP de GET
+            15.6.1.1. Por convenção utilizamos o parâmetro da url com o mesmo alias na @PathVariable
+        15.6.2. Em seguida, adicionar @ResponseBody
+            15.6.2.1. Na SOMOS não utilizamos esta anotação. Verificar se é necessário mesmo
+        15.6.3. O retorno do meu método DEVE ser um ResponseEntity<T>
+        15.6.4. Dentro do método, chamar o repository (ou service) que foi injetado na controller
+        15.6.5. No return, quando sucesso e quiser retornar um 200, retornar: ResponseEntity.ok(cliente.get());
+                Quando não encontrado, retornar um 404, retornar: ResponseEntity.notFound().build();
+            15.6.5.1. cliente.get() para obter o cliente que está dentro do Optional<T>
+            15.6.5.2. O ResponseEntity é a resposta que retorno na API. Ele pode ser o Header + Body ou só o Body. ele é
+                      muito versátil e posso formatá-lo usando um construtor (nova instancia de ResponseEntity) para voltar
+                      o que eu quiser na API.
+        15.6.6. Criar um CommandLineRunner para criar e salvar um cliente no H2
+
+
+
+
 
 
 
