@@ -76,11 +76,11 @@ Trabalhando com SPRING DATA JPA
     referencia do SB.
     10.1. Basta informar a Query que eu desejo, no formato JPQL ou SQL (vide dica a seguir) e passar os parametros.
     DICA! Caso eu queira montar uma query nativa, ao invés de um JPQL em um @Query, eu posso setar o flag para true, conforme exemplo
-    EX.:
-    public interface UserRepository extends JpaRepository<User, Long> {
-      @Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = :emailAddress", nativeQuery = true)
-      User findByEmailAddress(@Param("emailAddress") String emailAddress);
-    }
+          EX.:
+          public interface UserRepository extends JpaRepository<User, Long> {
+            @Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = :emailAddress", nativeQuery = true)
+            User findByEmailAddress(@Param("emailAddress") String emailAddress);
+          }
     10.2. Também posso utilizar o @Query p/ fazer modificações como um delete por exemplo. Para isso preciso adicionar a anotação @Modifying
 11. Para exibir o SQL que está sendo gerado/executado pelo Hibernate(JPA) devemos fazer o setup no arquivo de configuração
     application.properties. Vide arquivo.
@@ -108,9 +108,9 @@ Trabalhando com SPRING DATA JPA
                     return pedidos;
                 }
         DICA! De preferencia a LocalDate ao invés de Date e/ou Calendar. O LocalDate é mais simples de trabalhar
-        Ex.:
-        Pegando a data: LocalDate.now()
-        Pegando a data/hora LocalDateTime.now()
+              Ex.:
+              Pegando a data: LocalDate.now()
+              Pegando a data/hora LocalDateTime.now()
 13. Criar os repositorys: Produtos, Pedidos e ItensPedido. A implementação é padrão, apenas conforme ex. abaixo
     Ex.:
     public interface ItensPedido extends JpaRepository<ItemPedido, Integer> { }
@@ -131,7 +131,7 @@ Trabalhando com SPRING DATA JPA
     15.4. Definir uma URL base para a API é uma boa prática. Antes do nome da classe usar @RequestMapping("/api/clientes")
         15.4.1. Este valor é opcional. Posso definí-lo diretamente em cima dos métodos da controller
     15.5. Injetar os repositorys ou services na controller
-        15.5.1. Aqui foi criado um construtor p/ fazer a injeção, mas na SOMOS usamos @RequiredArgsConstructor
+        15.5.1. Aqui foi criado um construtor p/ fazer a injeção, mas na SOMOS não usamos isso. Como é feito na SOMOS?
     15.6. Criando um método GET: @GetMapping
         15.6.1. No método colocar a anotação @GetMapping("consulta-cliente-id/{id}"), seguida do path, com ou sem parâmetros,
                 para identificar qué será operação HTTP de GET
@@ -147,8 +147,29 @@ Trabalhando com SPRING DATA JPA
                       muito versátil e posso formatá-lo usando um construtor (nova instancia de ResponseEntity) para voltar
                       o que eu quiser na API.
         15.6.6. Criar um CommandLineRunner para criar e salvar um cliente no H2
-
-
+        DICA! Como o meu JSON está retornado a lista de pedidos vinculada ao cliente (devido ao mapeamento @OneToMay da entidade)
+              Ex.:
+              {
+                  "id": 2,
+                  "nome": "Cicrano",
+                  "pedidos": []
+              }
+              Eu posso colocar uma anotação @JsonIgnore em cima da propriedade mapeada que retorna a lista
+              Ex.:
+              @JsonIgnore // Para que o meu JSON não retorne a lista de pedidos
+              @OneToMany(mappedBy = "cliente")
+              private Set<Pedido> pedidos;
+    15.7. Criando um método POST: @PostMapping
+        15.7.1. No método colocar a anotação @PostMapping("salvar-cliente") seguida do path
+        15.7.2. Assim como no GET, colocar o @ResponseBody para que o objeto retornado pelo controller seja automaticamente
+                serializado em JSON
+        15.7.3. Na assinatura do método, preciso colocar um @RequestBody, para que mapear o HttpRequest e "desserializar"
+                o body do HttpRequest em um objeto Java. O Spring automaticamente transforma o JSON em objeto Java usando
+                esta anotação
+    15.8. Criando um método DELETE: @DeleteMapping
+        15.8.1. O @DeleteMapping é igual ao @GetMapping. Preciso informar o path, o parâmetro, o @ResponseBody, etc
+        15.8.2. Normalmente quando fazemos a deleção retornamos um: ResponseEntity.noContent().build(), que é um retorno 204 de sucesso
+                mas que não retorna nenhum conteúdo, afinal fiz uma exclusão.
 
 
 

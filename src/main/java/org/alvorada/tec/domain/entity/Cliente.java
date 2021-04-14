@@ -1,5 +1,7 @@
 package org.alvorada.tec.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -19,6 +21,7 @@ public class Cliente {
     // Caso eu queira trazer todos os pedidos de um cliente, eu posso adicionar o mapeamento abaixo
     // Usei Set, mas poderia usar List ou Collection. O Set garante que não terei pedidos repetidos na lista + indicado
     // O mappedBy deve referenciar a propriedade que eu tenho em Pedido que é a FK de cliente. Ex: private Cliente cliente;
+    @JsonIgnore // Para que o meu JSON não retorne a lista de pedidos
     @OneToMany(mappedBy = "cliente")
     private Set<Pedido> pedidos;
 
