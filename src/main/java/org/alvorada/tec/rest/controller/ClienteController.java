@@ -56,4 +56,17 @@ public class ClienteController {
         // Retornando um 404
         return ResponseEntity.notFound().build();
     }
+
+    @PutMapping("/atualizar-cliente-id/{id}")
+    @ResponseBody
+    public ResponseEntity updateClienteById( @PathVariable Integer id,
+                                             @RequestBody Cliente cliente) {
+        //clientes.findById(id) me retorna um Optional<T> e este permite que eu encadeie algumas chamadas, como o .map()
+        return clientes.findById(id).map(c -> {
+            cliente.setId(c.getId()); // Ao invés de usar o set de cada atributo da classe, eu uso o setId e automaticamente atualizo todas as propriedades
+            clientes.save(cliente);
+            return ResponseEntity.noContent().build();
+        }).orElseGet(() -> ResponseEntity.notFound().build());
+        //o método .orElseGet() recebe um suplier. O suplier é um interface funcional que não recebe parametros e retorna qualquer coisa
+    }
 }

@@ -170,7 +170,17 @@ Trabalhando com SPRING DATA JPA
         15.8.1. O @DeleteMapping é igual ao @GetMapping. Preciso informar o path, o parâmetro, o @ResponseBody, etc
         15.8.2. Normalmente quando fazemos a deleção retornamos um: ResponseEntity.noContent().build(), que é um retorno 204 de sucesso
                 mas que não retorna nenhum conteúdo, afinal fiz uma exclusão.
-
+    15.9. Criando um método PUT: @PutMapping
+        15.9.1. O @PutMapping é indicado para quando vamos fazer uma atualização INTEGRAL dos dados (comparar com @PatchMapping)
+                ou seja, os parâmetros não informados serão transformados em nulo.
+        15.9.2. Na assinatura do método que vou usar o put, utilizamos 2 parâmetros de entrada. O ID que eu quero atualizar
+                e o @RequestBody, que é onde eu recebo os dados
+        15.9.3. Neste método eu faço a consulta pelo findById() e salvo usando o .save()
+            15.9.3.1. O uso do Optional<T> permite que eu encadeie chamadas, como o .map() por exemplo. Neste .map() posso usar uma
+                      lambda p/ setar o id e salvar o cliente no H2 e ainda dar o retorno .noContent()
+            DICA! Ao invés de setar atributo por atributo, posso usar o .setId() que ele automaticamente seta todas as propriedades
+            15.9.3.2. Para finalizar o uso do .map(), uso o .orElseGet(). O método .orElseGet() recebe um suplier.
+                      O suplier é um interface funcional que não recebe parâmetros e retorna qualquer coisa
 
 
 
