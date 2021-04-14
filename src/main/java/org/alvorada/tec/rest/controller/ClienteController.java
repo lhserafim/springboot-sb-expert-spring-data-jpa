@@ -2,10 +2,13 @@ package org.alvorada.tec.rest.controller;
 
 import org.alvorada.tec.domain.entity.Cliente;
 import org.alvorada.tec.domain.repository.Clientes;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -59,6 +62,7 @@ public class ClienteController {
 
     @PutMapping("/atualizar-cliente-id/{id}")
     @ResponseBody
+    // Neste caso, não pude retornar um <Cliente>, por isso não deixei explícito
     public ResponseEntity updateClienteById( @PathVariable Integer id,
                                              @RequestBody Cliente cliente) {
         //clientes.findById(id) me retorna um Optional<T> e este permite que eu encadeie algumas chamadas, como o .map()
@@ -68,5 +72,16 @@ public class ClienteController {
             return ResponseEntity.noContent().build();
         }).orElseGet(() -> ResponseEntity.notFound().build());
         //o método .orElseGet() recebe um suplier. O suplier é um interface funcional que não recebe parametros e retorna qualquer coisa
+    }
+
+    @GetMapping("consulta-cliente-filtro")
+    @ResponseBody
+    public ResponseEntity<List<Cliente>> findByFiltro(Cliente filtro) {
+        // Definindo a estratégia de pesquisa (match)
+        ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+        // O Example permite que sejam extraídas as propriedades do objeto recebido. É um recurso do SPRING DATA que monta uma query dinâmica
+        // com o que está presente no objeto e cria um example
+        Example example = Example.of(filtro, matcher);
+        return ResponseEntity.ok(clientes.findAll(example)); // Se não encontrar nada, retorna uma lista vazia
     }
 }

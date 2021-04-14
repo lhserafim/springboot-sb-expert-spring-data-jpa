@@ -181,7 +181,13 @@ Trabalhando com SPRING DATA JPA
             DICA! Ao invés de setar atributo por atributo, posso usar o .setId() que ele automaticamente seta todas as propriedades
             15.9.3.2. Para finalizar o uso do .map(), uso o .orElseGet(). O método .orElseGet() recebe um suplier.
                       O suplier é um interface funcional que não recebe parâmetros e retorna qualquer coisa
-
+    15.10.Utilizando o Example e ExampleMatcher
+        15.10.1.Este métodos permitem que eu faça consultas dinâmicas sem criá-las no repository
+        15.10.2.Faço a denifição do ExampleMatcher, que é a estratégia da pesquisa e o Example recebe o filtro + matcher
+                Ex.:
+                ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+                Example example = Example.of(filtro, matcher);
+                return ResponseEntity.ok(clientes.findAll(example));
 
 
 
