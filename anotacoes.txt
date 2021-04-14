@@ -136,7 +136,7 @@ Trabalhando com SPRING DATA JPA
         15.6.1. No método colocar a anotação @GetMapping("consulta-cliente-id/{id}"), seguida do path, com ou sem parâmetros,
                 para identificar qué será operação HTTP de GET
             15.6.1.1. Por convenção utilizamos o parâmetro da url com o mesmo alias na @PathVariable
-        15.6.2. Em seguida, adicionar @ResponseBody
+        15.6.2. Em seguida, adicionar @ResponseBody (Se usarmos @RestController ao invés de @Controller não precisamos disso)
             15.6.2.1. Na SOMOS não utilizamos esta anotação. Verificar se é necessário mesmo
         15.6.3. O retorno do meu método DEVE ser um ResponseEntity<T>
         15.6.4. Dentro do método, chamar o repository (ou service) que foi injetado na controller

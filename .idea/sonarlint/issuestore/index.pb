@@ -25,3 +25,9 @@ n
 >src/main/java/org/alvorada/tec/domain/repository/Produtos.java,a/8/a802127c4697a2a761a25e0d47ae646e6fc1a00a
 q
 Asrc/main/java/org/alvorada/tec/domain/repository/ItensPedido.java,9/2/92c7daf9494376c0a61cc03f75ae70e638fe6bea
+v
+Fsrc/main/java/org/alvorada/tec/VendasApplicationCommandLIneRunner.java,1/4/1418f9904f5e141017f6317fe1e48c56a440c7c1
+r
+Bsrc/main/java/org/alvorada/tec/domain/repository/ClientesJdbc.java,f/a/fa5cd94253d6ae2b918263b6942ff28f93468cb4
+u
+Esrc/main/java/org/alvorada/tec/rest/controller/ClienteController.java,c/e/ce58d16f94290235e9519d7630860bb9e130865f

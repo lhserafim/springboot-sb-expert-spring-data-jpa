@@ -76,7 +76,7 @@ public class ClienteController {
 
     @GetMapping("consulta-cliente-filtro")
     @ResponseBody
-    public ResponseEntity<List<Cliente>> findByFiltro(Cliente filtro) {
+    public ResponseEntity<List<Cliente>> findByFiltro(Cliente filtro) { // Neste caso não pode ter o RequestBody. Se não retorna bad request
         // Definindo a estratégia de pesquisa (match)
         ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
         // O Example permite que sejam extraídas as propriedades do objeto recebido. É um recurso do SPRING DATA que monta uma query dinâmica
