@@ -23,7 +23,9 @@ public class ClienteController {
     }
 
     @GetMapping("consulta-cliente-id/{id}")
-    @ResponseBody
+    @ResponseBody // Também funcionou sem o ResponseBody
+    // The @ResponseBody annotation tells a controller that the object returned is automatically serialized into JSON
+    // and passed back into the HttpResponse object.
     public ResponseEntity<Cliente> getClienteById(@PathVariable Integer id) {
         // Optional é usada pois pode existir ou não um cliente por este id
         Optional<Cliente> cliente = clientes.findById(id);
