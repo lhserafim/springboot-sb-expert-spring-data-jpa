@@ -1,5 +1,9 @@
 package org.alvorada.tec.rest.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Criando o DTO (Data Transfer Object) para o JSON abaixo
  * {
@@ -13,6 +17,9 @@ package org.alvorada.tec.rest.dto;
  *   ]
  * }
  * */
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class ItemPedidoDto {
     private Integer produto;
     private Integer quantidade;

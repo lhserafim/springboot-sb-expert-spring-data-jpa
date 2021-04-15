@@ -224,8 +224,21 @@ Trabalhando com SPRING DATA JPA
           }
     19.2. Na package rest/dto criar as classes PedidoDTO e ItemPedidoDTO
         19.2. Nestas classes, fazer o mapeamento das propriedades, conforme definido no JSON
-    DICA! Para não precisar criar manualmente os getters e setters, vamos
-
+    DICA! Para não precisar criar manualmente os getters e setters, vamos utilizar o projeto LOMBOK
+20. Configuração do LOMBOK
+    20.1. Adicionar a dependência do Lombok no pom.xml https://projectlombok.org/setup/maven, REMOVENDO A VERSÃO para deixar
+          que o SB gerencie isso
+    20.2. Caso não tenha, instalar o plugin do Lombok na IDE
+    20.3. Algumas anotações do lombok importantes, que irão suprimir a necessidade de criar getters, setters, construtores, etc
+          Ex.:
+          @Getter
+          @Setter
+          @ToString
+          @EqualsAndHashCode
+          @NoArgsConstructor // Construtor sem argumentos
+          @AllArgsConstructor // Construtor com argumentos
+          @Data // É um compilado que já tem @Getter, @Setter, @RequiredArgsConstructor, @ToString e @EqualsAndHashCode
+    20.4. Eu precisei adicionar o Lombok ao meu classpath para poder reconhecer as anotações
 
 
 
