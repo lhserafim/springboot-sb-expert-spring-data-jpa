@@ -1,7 +1,7 @@
 package org.alvorada.tec.rest.controller;
 
 import org.alvorada.tec.domain.entity.Cliente;
-import org.alvorada.tec.domain.repository.Clientes;
+import org.alvorada.tec.domain.repository.ClientesRepository;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,10 @@ import java.util.Optional;
 public class ClienteController {
 
     // Injetando o repository na controller
-    private Clientes clientes;
+    private ClientesRepository clientesRepository;
 
-    public ClienteController(Clientes clientes) {
-        this.clientes = clientes;
+    public ClienteController(ClientesRepository clientesRepository) {
+        this.clientesRepository = clientesRepository;
     }
 
     @GetMapping("consulta-cliente-id/{id}")
@@ -28,7 +28,7 @@ public class ClienteController {
     // and passed back into the HttpResponse object.
     public ResponseEntity<Cliente> getClienteById(@PathVariable Integer id) {
         // Optional é usada pois pode existir ou não um cliente por este id
-        Optional<Cliente> cliente = clientes.findById(id);
+        Optional<Cliente> cliente = clientesRepository.findById(id);
         if(cliente.isPresent()) {
             // ResponseEntity.ok() retorna um 200 quando sucesso na API
             return ResponseEntity.ok(cliente.get()); // cliente.get() para obter o cliente que está dentro do Optional<>
@@ -45,7 +45,7 @@ public class ClienteController {
     @ResponseBody
     // Como estou recebendo um objeto Json p/ representar cliente, preciso colocar a anotação @RequestBody
     public ResponseEntity<Cliente> saveCliente(@RequestBody Cliente cliente) {
-        Cliente clienteSalvo = clientes.save(cliente);
+        Cliente clienteSalvo = clientesRepository.save(cliente);
         return ResponseEntity.ok(clienteSalvo);
     }
 
@@ -53,9 +53,9 @@ public class ClienteController {
     @ResponseBody
     public ResponseEntity<Cliente> deleteClienteById(@PathVariable Integer id) {
         // Optional é usada pois pode existir ou não um cliente por este id
-        Optional<Cliente> cliente = clientes.findById(id);
+        Optional<Cliente> cliente = clientesRepository.findById(id);
         if(cliente.isPresent()) {
-            clientes.delete(cliente.get()); // Dando um get() no Optional<> para pegar o cliente retornado e excluí-lo
+            clientesRepository.delete(cliente.get()); // Dando um get() no Optional<> para pegar o cliente retornado e excluí-lo
             // ResponseEntity.noContent() é um retorno 204 de sucesso mas que não retorna nenhum conteúdo
             return ResponseEntity.noContent().build();
         }
@@ -69,9 +69,9 @@ public class ClienteController {
     public ResponseEntity updateClienteById( @PathVariable Integer id,
                                              @RequestBody Cliente cliente) {
         //clientes.findById(id) me retorna um Optional<T> e este permite que eu encadeie algumas chamadas, como o .map()
-        return clientes.findById(id).map(c -> {
+        return clientesRepository.findById(id).map(c -> {
             cliente.setId(c.getId()); // Ao invés de usar o set de cada atributo da classe, eu uso o setId e automaticamente atualizo todas as propriedades
-            clientes.save(cliente);
+            clientesRepository.save(cliente);
             return ResponseEntity.noContent().build();
         }).orElseGet(() -> ResponseEntity.notFound().build());
         //o método .orElseGet() recebe um suplier. O suplier é um interface funcional que não recebe parametros e retorna qualquer coisa
@@ -85,6 +85,6 @@ public class ClienteController {
         // O Example permite que sejam extraídas as propriedades do objeto recebido. É um recurso do SPRING DATA que monta uma query dinâmica
         // com o que está presente no objeto e cria um example
         Example example = Example.of(filtro, matcher);
-        return ResponseEntity.ok(clientes.findAll(example)); // Se não encontrar nada, retorna uma lista vazia
+        return ResponseEntity.ok(clientesRepository.findAll(example)); // Se não encontrar nada, retorna uma lista vazia
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 // O JpaRepository recebe dois tipos parametrizados. A entidade e o tipo de dado do ID da entidade
-public interface Clientes extends JpaRepository<Cliente, Integer> {
+public interface ClientesRepository extends JpaRepository<Cliente, Integer> {
 
     // Query Methods
 

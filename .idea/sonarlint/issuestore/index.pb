@@ -31,3 +31,5 @@ r
 Bsrc/main/java/org/alvorada/tec/domain/repository/ClientesJdbc.java,f/a/fa5cd94253d6ae2b918263b6942ff28f93468cb4
 u
 Esrc/main/java/org/alvorada/tec/rest/controller/ClienteController.java,c/e/ce58d16f94290235e9519d7630860bb9e130865f
+y
+Isrc/main/java/org/alvorada/tec/rest/controller/ClienteRestController.java,d/f/dff3d707c97e1a36d8950ea5c42e7e03a0f9a4f2
