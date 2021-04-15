@@ -3,8 +3,6 @@
 anotacoes.txt,a/2/a2c658ac08de1ed3667931f7cda8421941023417
 i
 9src/main/java/org/alvorada/tec/domain/entity/Cliente.java,c/2/c22058dae2995cec19ec8165c841bcccdadf8297
-n
->src/main/java/org/alvorada/tec/domain/repository/Clientes.java,b/c/bcee58cdee9867b6f1dd48bcdd3e0b6066749bd8
 e
 5src/main/java/org/alvorada/tec/VendasApplication.java,c/d/cd629ed38c8846737fea6bad4ca869d950961abe
 7
@@ -19,12 +17,6 @@ Fsrc/main/java/org/alvorada/tec/VendasApplicationJdbcEntityManager.java,3/2/320
 Ksrc/main/java/org/alvorada/tec/domain/repository/ClientesEntityManager.java,b/1/b15974611df52bc4709e1da6fd71a92968957aec
 h
 8src/main/java/org/alvorada/tec/domain/entity/Pedido.java,8/4/84fa9025ca73c6c665cb88dbe8c462f53dd1298d
-m
-=src/main/java/org/alvorada/tec/domain/repository/Pedidos.java,f/b/fb0b88b3d3b8453aa7cc92c367824be5910f5506
-n
->src/main/java/org/alvorada/tec/domain/repository/Produtos.java,a/8/a802127c4697a2a761a25e0d47ae646e6fc1a00a
-q
-Asrc/main/java/org/alvorada/tec/domain/repository/ItensPedido.java,9/2/92c7daf9494376c0a61cc03f75ae70e638fe6bea
 v
 Fsrc/main/java/org/alvorada/tec/VendasApplicationCommandLIneRunner.java,1/4/1418f9904f5e141017f6317fe1e48c56a440c7c1
 r
@@ -33,3 +25,9 @@ u
 Esrc/main/java/org/alvorada/tec/rest/controller/ClienteController.java,c/e/ce58d16f94290235e9519d7630860bb9e130865f
 y
 Isrc/main/java/org/alvorada/tec/rest/controller/ClienteRestController.java,d/f/dff3d707c97e1a36d8950ea5c42e7e03a0f9a4f2
+x
+Hsrc/main/java/org/alvorada/tec/domain/repository/ClientesRepository.java,9/4/942d461ccb1d04fb15a72f851cd6920d1982f641
+x
+Hsrc/main/java/org/alvorada/tec/domain/repository/ProdutosRepository.java,9/c/9c9b76d9b2cac0923e3c5f5ae7e25bd5ba8080e1
+y
+Isrc/main/java/org/alvorada/tec/rest/controller/ProdutoRestController.java,9/4/94dd10c2580360d7fdd955f9fefe75a655588921
