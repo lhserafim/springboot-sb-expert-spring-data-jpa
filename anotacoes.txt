@@ -200,7 +200,8 @@ Trabalhando com SPRING DATA JPA
     16.3. Para dar o retorno correto quando houver um erro, usar orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     DICA! Para que seja exibida a mensagem contida em ResponseStatusException é necessário adicionar ao application.properties: server.error.include-message=always
 17. Para a ProdutoRestController, foram feitas a criação dos endpoints na mesma estrutura do que foi criado p/ ClienteRestController
-18. PedidoRestController
+18. PedidoRestController. Para implementar este controller, teremos que trabalhar com services, pois teremos mais regras de negócio e
+    usaremos multiplos repositorys
     18.1. Diferente de ProdutosRestController e ClientesRestController, aqui vamos implementar a boa e indicada prática de criar uma
           interface Service. Portanto, criar a package service e a interface PedidoService.
           18.1.1. O service é indicado pq colocamos as regras de negócio nos services e geralmente utilizamos vários repositorys nele
@@ -209,8 +210,21 @@ Trabalhando com SPRING DATA JPA
           classe que implementa um service do tipo interface
         18.3.1. Na declaração da classe, dizer que ela "implements PedidoService"
         18.3.2. Fazer a injeção do repository PedidosRepository dentro do Service criando seu construtor
-
-
+19. Trabalhando com DTO
+    19.1. Vamos criar um DTO para atender ao JSON de pedidos, conforme o modelo:
+          {
+            "cliente": 1,
+            "total": 100,
+            "items": [
+              {
+                "produto": 1,
+                "quantidade": 10
+              }
+            ]
+          }
+    19.2. Na package rest/dto criar as classes PedidoDTO e ItemPedidoDTO
+        19.2. Nestas classes, fazer o mapeamento das propriedades, conforme definido no JSON
+    DICA! Para não precisar criar manualmente os getters e setters, vamos
 
 
 
