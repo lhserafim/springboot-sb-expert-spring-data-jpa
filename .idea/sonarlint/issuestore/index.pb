@@ -31,3 +31,13 @@ x
 Hsrc/main/java/org/alvorada/tec/domain/repository/ProdutosRepository.java,9/c/9c9b76d9b2cac0923e3c5f5ae7e25bd5ba8080e1
 y
 Isrc/main/java/org/alvorada/tec/rest/controller/ProdutoRestController.java,9/4/94dd10c2580360d7fdd955f9fefe75a655588921
+i
+9src/main/java/org/alvorada/tec/service/PedidoService.java,5/c/5c131e83d84951b7e8d9670acf15455008d4f93f
+r
+Bsrc/main/java/org/alvorada/tec/service/impl/PedidoServiceImpl.java,1/4/149b79255466b95eab6b57f01d65e0cf3a01bb80
+x
+Hsrc/main/java/org/alvorada/tec/rest/controller/PedidoRestController.java,1/d/1d34275ccd1ff0eaca4e4aaf750f89916d67caa3
+j
+:src/main/java/org/alvorada/tec/rest/dto/ItemPedidoDto.java,6/7/67b4ac2af4f263928299856f89af65f7dc766626
+f
+6src/main/java/org/alvorada/tec/rest/dto/PedidoDTO.java,2/c/2c4b96a9a0cf959cdeb459e4eb29c754937d23da

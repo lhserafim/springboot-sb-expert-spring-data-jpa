@@ -1,5 +1,6 @@
 package org.alvorada.tec.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class ItemPedido {
     @Column(name = "id")
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;

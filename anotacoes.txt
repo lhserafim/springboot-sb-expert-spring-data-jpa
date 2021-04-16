@@ -131,7 +131,8 @@ Trabalhando com SPRING DATA JPA
     15.4. Definir uma URL base para a API é uma boa prática. Antes do nome da classe usar @RequestMapping("/api/clientes")
         15.4.1. Este valor é opcional. Posso definí-lo diretamente em cima dos métodos da controller
     15.5. Injetar os repositorys ou services na controller
-        15.5.1. Aqui foi criado um construtor p/ fazer a injeção, mas na SOMOS não usamos isso. Como é feito na SOMOS?
+        15.5.1. Aqui foi criado um construtor p/ fazer a injeção, mas na SOMOS não usamos isso. Pois podemos usar o Lombok
+                e então a anotação @RequiredArgsConstructor
     15.6. Criando um método GET: @GetMapping
         15.6.1. No método colocar a anotação @GetMapping("consulta-cliente-id/{id}"), seguida do path, com ou sem parâmetros,
                 para identificar qué será operação HTTP de GET
@@ -239,9 +240,27 @@ Trabalhando com SPRING DATA JPA
           @AllArgsConstructor // Construtor com argumentos
           @Data // É um compilado que já tem @Getter, @Setter, @RequiredArgsConstructor, @ToString e @EqualsAndHashCode
     20.4. Eu precisei adicionar o Lombok ao meu classpath para poder reconhecer as anotações
-
-
-
+21. Implementando a PedidoRestController
+    21.1. Na controller, criar o método post para salvar os clientes. Este método não tem regra de negócio, ele apenas
+          chama o PedidosService (interface), que tem um método NÃO IMPLEMENTADO de salvar
+    21.2. Como a classe PedidoServiceImpl, implementa PedidoService, precisamos, obviamente implementar o método nesta classe
+        21.2.1. Este método recebe um DTO portanto eu preciso pegar os dados do dto e transferí-los para a entidade de pedidos
+        DICA! Para evitar o uso de construtores, vamos usar a anotação @RequiredArgsConstructor do Lombok e definir as
+              propriedades como final. Assim o Lombok faz a gestão da construção para nós
+        21.2.2. Algumas propriedades de Pedido podem ser "setadas" facilmente, dando um get no DTO
+                Ex.:
+                pedido.setTotal(dto.getTotal());
+                Porém outras precisam voltar OBJETOS e no DTO só temos o ID deles. Então o que devemos fazer é:
+            21.2.2.1. Trazer TODOS os repositorys que vamos utilizar no service para que possamos utilizar o findById()
+                      deste repository
+            21.2.2.2. Como o ID pode ser inválido vamos criar uma package e classe para tratar as exceções personalizadas.
+                      Criar a classe exception/RegrasNegocioException, extendendo RuntimeException e implementar o construtor do super
+            21.2.2.3. Agora podemos voltar para a pesquisa por id e adicionar a chamada desta exception caso o ID não seja encontrado
+            21.2.2.4. Criar um método para percorrer a lista de pedidos DTO, recuperar as entidades e setar os valores
+                21.2.2.4.1. Para percorrer a lista precisamos utilizar o stream() e depois transformar em lista novamente
+                            .collect(Collectors.toList())
+            21.2.2.5. Utilizei @JsonIgnore no mapeamento da coluna do ItemPedido pois estava ficando em loop
+            IMPORTANTE! Sempre usar a anotação @Transactional nos métodos que salvam dados no banco para garantir que só será salvo se tudo estiver OK no método
 
 
 

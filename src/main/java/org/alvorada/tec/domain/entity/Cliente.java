@@ -35,10 +35,6 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private Set<Pedido> pedidos;
 
-    public Set<Pedido> getPedidos() {
-        return pedidos;
-    }
-
     // Os construtores foram criados p/ que eu possa rodar jdbcTemplate.query
 
     public Cliente(String nome) {
