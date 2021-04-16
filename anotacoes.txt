@@ -261,6 +261,20 @@ Trabalhando com SPRING DATA JPA
                             .collect(Collectors.toList())
             21.2.2.5. Utilizei @JsonIgnore no mapeamento da coluna do ItemPedido pois estava ficando em loop
             IMPORTANTE! Sempre usar a anotação @Transactional nos métodos que salvam dados no banco para garantir que só será salvo se tudo estiver OK no método
-
+22. Implementando @ControllerAdvice e os ExceptionsHandlers para dar um retorno de erro apropriado
+    22.1. Para que eu consiga dar um retorno de erros adequado eu preciso interceptar o erro e manipulá-lo para dar o retorno correto ao cliente
+    22.2. O primeiro passo é ter uma classe, do tipo exception como a RegrasNegocioException. Esta classe será lançada quando
+          eu desejar, ou melhor dizendo quando uma regra de negócio ou um dado falhar.
+    22.3. Após implementar nos meus services a chamada para a classe, ex.: new RegrasNegocioException("ID do cliente não encontrado") eu preciso criar
+          mais 2 classes para capturar esta esseção e manipulá-la.
+    22.4. Primeiramente criamos a classe ApiErrors na package rest. Esta classe tem 1 propriedade que é a lista de erros e um construtor que vai
+          instanciar as mensagens de erro
+    22.5. Em seguida criar a classe ApplicationControllerAdvice em rest/controller e anotar com @RestControllerAdvice
+        22.5.1. @RestControllerAdvice permite fazer o tratamento dos erros utilizando os exception handlers, que são métodos que capturam o
+                erro e nos permitem fazer um tratamento e voltar uma mensagem de status correta para o nosso cliente
+        22.5.2. Neste método informar a classe de exceção que será capturada @ExceptionHandler(RegrasNegocioException.class)
+        22.5.3. Informar o tipo do retorno http @ResponseStatus(HttpStatus.BAD_REQUEST)
+        22.5.4. E por fim criar o método que vai receber a exceção (capturada) e vai gerar uma nova instancia de ApiErrors
+    DICA! Costumamos retornar BAD_REQUEST para erros de negócio/dados nas APIs
 
 

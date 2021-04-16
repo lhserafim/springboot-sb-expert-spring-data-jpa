@@ -41,3 +41,5 @@ j
 :src/main/java/org/alvorada/tec/rest/dto/ItemPedidoDto.java,6/7/67b4ac2af4f263928299856f89af65f7dc766626
 f
 6src/main/java/org/alvorada/tec/rest/dto/PedidoDTO.java,2/c/2c4b96a9a0cf959cdeb459e4eb29c754937d23da
+t
+Dsrc/main/java/org/alvorada/tec/exception/RegrasNegocioException.java,6/3/632d33f6134b9dc04ab8a6a69a0b43522e141c7a
