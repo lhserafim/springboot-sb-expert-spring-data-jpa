@@ -2,6 +2,8 @@ package org.alvorada.tec.rest.controller;
 
 import org.alvorada.tec.domain.entity.ItemPedido;
 import org.alvorada.tec.domain.entity.Pedido;
+import org.alvorada.tec.domain.enums.StatusPedido;
+import org.alvorada.tec.rest.dto.AtualizacaoStatusPedidoDTO;
 import org.alvorada.tec.rest.dto.InformacoesItemPedidoDTO;
 import org.alvorada.tec.rest.dto.InformacoesPedidoDTO;
 import org.alvorada.tec.rest.dto.PedidoDTO;
@@ -11,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -29,10 +32,20 @@ public class PedidoRestController {
     // Criar pedido. Retorna o ID do pedido
     @PostMapping("salvar-pedido")
     @ResponseStatus(HttpStatus.CREATED)
-    public Pedido salvarPedido(@RequestBody PedidoDTO dto) {
+    public Pedido salvarPedido(@RequestBody @Valid PedidoDTO dto) {
         Pedido pedido = pedidoService.salvar(dto);
         return pedido;
     }
+
+    @PatchMapping("cancelar-pedido-id/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateCancelarPedido(@PathVariable Integer id,
+                                     @RequestBody AtualizacaoStatusPedidoDTO dto) {
+        String status = dto.getNovoStatus();
+        pedidoService.atualizarStatus(id, StatusPedido.valueOf(status)); // Transformando string em ENUM
+
+    }
+
     @GetMapping("consultar-pedido-id/{id}")
     public InformacoesPedidoDTO getPedidoById(@PathVariable Integer id) {
         return pedidoService

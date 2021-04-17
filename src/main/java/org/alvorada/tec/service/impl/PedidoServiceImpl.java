@@ -10,6 +10,7 @@ import org.alvorada.tec.domain.repository.ClientesRepository;
 import org.alvorada.tec.domain.repository.ItensPedidoRepository;
 import org.alvorada.tec.domain.repository.PedidosRepository;
 import org.alvorada.tec.domain.repository.ProdutosRepository;
+import org.alvorada.tec.exception.PedidoNaoEncontradoException;
 import org.alvorada.tec.exception.RegrasNegocioException;
 import org.alvorada.tec.rest.dto.ItemPedidoDto;
 import org.alvorada.tec.rest.dto.PedidoDTO;
@@ -80,5 +81,16 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Optional<Pedido> obterPedidoCompleto(Integer id) {
         return pedidosRepository.findByIdFetchItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void atualizarStatus(Integer id, StatusPedido statusPedido) {
+        pedidosRepository.findById(id)
+                .map(p -> {
+                    p.setStatusPedido(statusPedido);
+                    return pedidosRepository.save(p);
+                })
+                .orElseThrow(() -> new PedidoNaoEncontradoException("Pedido não localizado"));
     }
 }

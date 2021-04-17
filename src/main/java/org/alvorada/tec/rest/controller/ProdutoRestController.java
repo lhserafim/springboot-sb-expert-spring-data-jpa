@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -48,12 +49,12 @@ public class ProdutoRestController {
 
     @PostMapping("salvar-produto")
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto save(@RequestBody Produto produto) {
+    public Produto save(@RequestBody @Valid Produto produto) {
         return produtosRepository.save(produto);
     }
 
     @PostMapping("salvar")
-    public ResponseEntity<Produto> salvarProduto(@RequestBody Produto produto) {
+    public ResponseEntity<Produto> salvarProduto(@RequestBody @Valid Produto produto) {
         return ResponseEntity.ok(produtosRepository.save(produto));
     }
 
@@ -82,7 +83,7 @@ public class ProdutoRestController {
     @PutMapping("atualizar-produto/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Produto updateProdutoById(@PathVariable Integer id,
-                                     @RequestBody Produto produto) {
+                                     @RequestBody @Valid Produto produto) {
         return produtosRepository.findById(id).map(p -> {
             produto.setId(p.getId());
             produtosRepository.save(produto);
@@ -94,7 +95,7 @@ public class ProdutoRestController {
 
     @PutMapping("atualizar/{id}")
     public ResponseEntity<Produto> atualizarProduto(@PathVariable Integer id,
-                                                    @RequestBody Produto produto) {
+                                                    @RequestBody @Valid Produto produto) {
         return ResponseEntity.ok(produtosRepository.findById(id).map(p -> {
             produto.setId(p.getId());
             produtosRepository.save(produto);
