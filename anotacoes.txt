@@ -276,5 +276,5 @@ Trabalhando com SPRING DATA JPA
         22.5.3. Informar o tipo do retorno http @ResponseStatus(HttpStatus.BAD_REQUEST)
         22.5.4. E por fim criar o método que vai receber a exceção (capturada) e vai gerar uma nova instancia de ApiErrors
     DICA! Costumamos retornar BAD_REQUEST para erros de negócio/dados nas APIs
-
+23. Para retornar um pedido em uma consulta é uma boa prática criar um DTO, pois assim só expomos o que o cliente pode acessar
 

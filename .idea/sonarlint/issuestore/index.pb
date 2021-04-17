@@ -43,3 +43,7 @@ f
 6src/main/java/org/alvorada/tec/rest/dto/PedidoDTO.java,2/c/2c4b96a9a0cf959cdeb459e4eb29c754937d23da
 t
 Dsrc/main/java/org/alvorada/tec/exception/RegrasNegocioException.java,6/3/632d33f6134b9dc04ab8a6a69a0b43522e141c7a
+
+Osrc/main/java/org/alvorada/tec/rest/controller/ApplicationControllerAdvice.java,4/3/430ae9bd22145ad8dc47bcd24332ea6224aa676d
+b
+2src/main/java/org/alvorada/tec/rest/ApiErrors.java,3/6/36c2ff86020e7f58b98b02a994a727055147c5f2

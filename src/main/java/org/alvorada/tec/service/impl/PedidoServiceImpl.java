@@ -71,4 +71,12 @@ public class PedidoServiceImpl implements PedidoService {
                 return itemPedido; // map retorna um objeto
             }).collect(Collectors.toList()); // Transformo em lista novamente
     }
+
+    // Uso Optional pq eu posso ter ou não o pedido
+    // Repare que mesmo tendo um DTO para receber os dados do pedido, eu estou recebendo ele em uma entidade Pedido
+    // Vou fazer a transfomação no controller de entidade para DTO. Náo é a pratica usada na SOMOS!
+    @Override
+    public Optional<Pedido> obterPedidoCompleto(Integer id) {
+        return pedidosRepository.findByIdFetchItens(id);
+    }
 }
