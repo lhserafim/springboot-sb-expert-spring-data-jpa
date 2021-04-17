@@ -3,6 +3,7 @@ package org.alvorada.tec.rest.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.alvorada.tec.validation.NotEmptyList;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -30,6 +31,7 @@ public class PedidoDTO {
     private Integer cliente;
     @NotNull(message = "Informe o valor total do pedido")
     private BigDecimal total;
+    @NotEmptyList(message = "Pedido não pode ser criado sem itens")
     private List<ItemPedidoDto> items;
 
 }

@@ -343,3 +343,9 @@
                         "O campo CPF é obrigatório"
                     ]
     DICA! Existem validações de @CPF e @CNPJ nativas no SB em org.hibernate.validator.constraints.br
+    26.5. Criando anotação de validação customizada
+        26.1. Criar as packages validation e dentro dela constraint
+        26.2. Em validation criar uma classe do tipo annotation e codificá-la igual ao que foi feito em @NotEmptyList que foi baseado na @NotNull
+        26.3. Como eu preciso apontar a @Constrait p/uma classe: @Constraint(validatedBy = NotEmptyListValidator.class), vou criar esta classe
+        26.4. A classe (criada dentro de constraint) precisa implementar o ConstraintValidator, passando a anotation criada + o tipo do dado que precisa ser validado
+        26.5. A validação em si (a regra de negócio que eu quero implementar) fica dentro do método implementado isValid()
