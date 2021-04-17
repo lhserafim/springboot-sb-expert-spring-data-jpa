@@ -13,6 +13,7 @@ public interface PedidosRepository extends JpaRepository<Pedido, Integer> {
 
     List<Pedido> findByCliente(Cliente cliente);
 
+    // O Join foi feito utilizando o fetch
     @Query("SELECT p " +
             " FROM Pedido p " +
             " LEFT JOIN FETCH p.itens " +

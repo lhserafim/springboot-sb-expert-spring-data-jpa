@@ -277,4 +277,16 @@ Trabalhando com SPRING DATA JPA
         22.5.4. E por fim criar o método que vai receber a exceção (capturada) e vai gerar uma nova instancia de ApiErrors
     DICA! Costumamos retornar BAD_REQUEST para erros de negócio/dados nas APIs
 23. Para retornar um pedido em uma consulta é uma boa prática criar um DTO, pois assim só expomos o que o cliente pode acessar
-
+    23.1. Criar os DTOs de InformacoesPedidoDTO e InformacoesItemPedidoDTO, e anotar com: @Data; @AllArgsConstructor; @NoArgsConstructor; @Builder
+        23.1.1. O @Builder permite que façamos o set na classe DTO de forma mais fácil
+                Ex.:
+                return InformacoesPedidoDTO.builder()
+                                .codigo(pedido.getId())
+                                .dataPedido(pedido.getDataPedido().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+                                .cpf(pedido.getCliente().getCpf())
+                                .build();
+    23.2. Criar o método no service e no serviceImpl chamando o repository para fazer a @Query por id.
+        23.2.1. Nos services, estou retornado uma entidade de Pedidos e não de DTO. A conversão será feita na controller
+        23.2.2. Utilizamos o @Query pois temos um JOIN e não foi possível fazer com query method
+    23.3. Na controller, chamar a service que foi injetada, usando o método p/ buscar o pedido e fazer a conversão de entidade
+          para DTO

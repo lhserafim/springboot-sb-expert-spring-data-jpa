@@ -1,3 +1,7 @@
 
+I
+java:S1612)",Replace this lambda with a method reference.(âÅË«8‚’êû/
 €
-java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "pedido".(û«üÇÿÿÿÿÿ8Ú—ÖÑ/
+java:S1488!"^Immediately return this expression instead of assigning it to the temporary variable "pedido".(û«üÇÿÿÿÿÿ8Ú—ÖÑ/
+V
+java:S1144L"4Remove this unused private "converterPedido" method.(Ü‡¿úÿÿÿÿ8‡‡ëü/
