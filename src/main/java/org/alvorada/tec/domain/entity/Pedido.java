@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.alvorada.tec.domain.enums.StatusPedido;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -33,6 +34,11 @@ public class Pedido {
     // Fazendo o mapeamento de um BigDecimal, com precisão de 2
     @Column(name = "total", precision = 20, scale = 2) // 20,2
     private BigDecimal total;
+
+    // Quando uma coluna obtiver os valores de um enum, fazer a anotação
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusPedido statusPedido;
 
     // Note que só consigo criar este mapeamento após fazer o mapeamento da entidade many. Pois preciso criar o
     // nome que será usado no mappedBy

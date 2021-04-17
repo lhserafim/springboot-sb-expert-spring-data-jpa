@@ -53,6 +53,7 @@ public class PedidoRestController {
                 .cpf(pedido.getCliente().getCpf())
                 .nomeCliente(pedido.getCliente().getNome())
                 .total(pedido.getTotal())
+                .status(pedido.getStatusPedido().name()) // Estou usando o name() para converter o enum em string
                 .items(converterListaItens(pedido.getItens())) // converter os itens do pedido
                 .build();
     }
@@ -80,6 +81,7 @@ public class PedidoRestController {
         dto.setCpf(pedido.getCliente().getCpf());
         dto.setDataPedido(pedido.getDataPedido().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         dto.setTotal(pedido.getTotal());
+        dto.setStatus(pedido.getStatusPedido().name());
         dto.setItems(pedido.getItens().stream().map( i -> {
                     InformacoesItemPedidoDTO itensDto = new InformacoesItemPedidoDTO();
                     itensDto.setQuantidade(i.getQuantidade());

@@ -5,6 +5,7 @@ import org.alvorada.tec.domain.entity.Cliente;
 import org.alvorada.tec.domain.entity.ItemPedido;
 import org.alvorada.tec.domain.entity.Pedido;
 import org.alvorada.tec.domain.entity.Produto;
+import org.alvorada.tec.domain.enums.StatusPedido;
 import org.alvorada.tec.domain.repository.ClientesRepository;
 import org.alvorada.tec.domain.repository.ItensPedidoRepository;
 import org.alvorada.tec.domain.repository.PedidosRepository;
@@ -41,6 +42,7 @@ public class PedidoServiceImpl implements PedidoService {
                 .orElseThrow(() -> new RegrasNegocioException("ID do cliente não encontrado")));
         pedido.setTotal(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
+        pedido.setStatusPedido(StatusPedido.REALIZADO);
         // Para poder setar os itens do pedido, preciso criar um método para percorrer a lista de itens que vem
         // do DTO e retornar uma lista pronta de itens já instanciados
         List<ItemPedido> itensPedido = converterItens(pedido, dto.getItems());

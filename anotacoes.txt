@@ -290,3 +290,8 @@ Trabalhando com SPRING DATA JPA
         23.2.2. Utilizamos o @Query pois temos um JOIN e não foi possível fazer com query method
     23.3. Na controller, chamar a service que foi injetada, usando o método p/ buscar o pedido e fazer a conversão de entidade
           para DTO
+24. Adicionando um atributo a entidade Pedido do tipo enum
+    24.1. Adicionar um novo atributo a entidade Pedido e como ele será um ENUM, marcá-lo com @Enumerated(EnumType.STRING)
+        24.1.1. Usamos EnumType.STRING pois não definimos os ordinais e também pq a coluna satus é string
+    24.2. Atualizar os DTOs desta entidade
+    24.3. Na controller, na hora de transformar de Entidade para DTO, passar esse novo parâmetro
