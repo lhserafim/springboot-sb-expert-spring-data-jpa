@@ -23,14 +23,13 @@ public class Cliente {
     private Integer id;
 
     @Column(name = "nome", length = 100)
-    @NotEmpty(message = "O campo nome é obrigatório") // Anotação usada pelo Bean Validation
+    @NotEmpty(message = "{campo.nome.obrigatorio}") // Anotação usada pelo Bean Validation // Usando Internacionalização
     private String nome;
 
     @Column(name = "cpf", length = 11)
-    @NotEmpty(message = "O campo CPF é obrigatório")
-    @CPF(message = "O CPF informado é inválido") // É uma validação de CPF que já existe p/ o local BR
+    @NotEmpty(message = "{campo.cpf.obrigatorio}") // Usando Internacionalização
+    @CPF(message = "{campo.cpf.invalido}") // É uma validação de CPF que já existe p/ o local BR // Usando Internacionalização
     private String cpf;
-
 
     // OPCIONAL para este contexto!
     // Caso eu queira trazer todos os pedidos de um cliente, eu posso adicionar o mapeamento abaixo

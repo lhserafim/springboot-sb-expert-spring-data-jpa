@@ -349,3 +349,11 @@
         26.3. Como eu preciso apontar a @Constrait p/uma classe: @Constraint(validatedBy = NotEmptyListValidator.class), vou criar esta classe
         26.4. A classe (criada dentro de constraint) precisa implementar o ConstraintValidator, passando a anotation criada + o tipo do dado que precisa ser validado
         26.5. A validação em si (a regra de negócio que eu quero implementar) fica dentro do método implementado isValid()
+    26.7. Internacionalização. Para que concentremos as mensagens em um só local devemos fazer o seguinte.
+        26.7.1. Criar um arquivo messages.properties e definir o conjunto chave/valor que será interpolado
+                Ex.:
+                campo.codigo-cliente.obrigatorio=Informe o código do cliente.
+        26.7.2. Nas entidades e DTOs, nas validações, chamar esta chave
+                Ex.:
+                @NotEmpty(message = "{campo.nome.obrigatorio}")
+        26.7.3. Por fim, criar um arquivo em config, conforme InternacionalizacaoConfig
