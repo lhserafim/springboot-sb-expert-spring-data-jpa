@@ -18,7 +18,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override // Para autenticar
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        super.configure(auth);
+        auth.inMemoryAuthentication() // Configurando um usuário em memória
+                .passwordEncoder(passwordEncoder()) // Passando o enconder
+                .withUser("fulano") // Definindo o usuário
+                .password(passwordEncoder().encode("123")) // definindo e criptografando a senha
+                .roles("USER"); // definindo o perfil do usuário
     }
 
     @Override // Para autorizar

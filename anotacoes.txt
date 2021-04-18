@@ -385,6 +385,8 @@
                 public PasswordEncoder passwordEncoder() {
                      return new BCryptPasswordEncoder(); // Gera uma hash com a senha criptografada
                 }
+        27.2.4. Configurando a autenticação em memória (porque estou usando um H2)
+
 
 
 
