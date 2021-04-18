@@ -53,3 +53,15 @@ q
 Asrc/main/java/org/alvorada/tec/rest/dto/InformacoesPedidoDTO.java,3/b/3b6e4595de85bfaa10fca2195e10704dcd764b76
 w
 Gsrc/main/java/org/alvorada/tec/domain/repository/PedidosRepository.java,2/6/2624085ea3d24553f49b9a214b1b8162f47929d5
+m
+=src/main/java/org/alvorada/tec/domain/enums/StatusPedido.java,7/d/7da5dbd93c6e10e028f91c1e3dc669c82007bf51
+z
+Jsrc/main/java/org/alvorada/tec/exception/PedidoNaoEncontradoException.java,1/0/109126d6471860383a5bf34a20efd353161d4e97
+w
+Gsrc/main/java/org/alvorada/tec/rest/dto/AtualizacaoStatusPedidoDTO.java,3/9/395d234a5671150111409e4def7912b97de19a83
+t
+Dsrc/main/java/org/alvorada/tec/config/InternacionalizacaoConfig.java,a/b/ab81c96f167b64737aa137c6cbe63dfa3daba9aa
+
+Osrc/main/java/org/alvorada/tec/validation/constraint/NotEmptyListValidator.java,a/1/a145e808fdebe2d823ecc186f897a888d0a66b1c
+k
+;src/main/java/org/alvorada/tec/validation/NotEmptyList.java,f/1/f11c95c27aa43fcc9437cbefcc6612c389871f58

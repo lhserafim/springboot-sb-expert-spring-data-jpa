@@ -357,3 +357,57 @@
                 Ex.:
                 @NotEmpty(message = "{campo.nome.obrigatorio}")
         26.7.3. Por fim, criar um arquivo em config, conforme InternacionalizacaoConfig
+------------------------------------------------------------------------------------------------------------------------
+                                    SPRING SECURITY
+------------------------------------------------------------------------------------------------------------------------
+27. Implementando segurança atráves do Spring Security
+    27.1. Adicionar a dependência ao arquivo pom.xml. Só com isso já será OBRIGATÓRIO informar a senha para acesar a API
+          Ex.:
+          <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+          </dependency>
+    27.2. Criar uma classe SecurityConfig em config, para ter TODA A CONFIGURAÇÃO do Spring Security.
+        27.2.1. Colocar a anotação @EnableWebSecurity
+        27.2.2. Extender WebSecurityConfigurerAdapter
+        27.2.3. Implementar 3 métodos:
+                @Override // Para autenticar
+                protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+                    super.configure(auth);
+                }
+
+                @Override // Para autorizar
+                protected void configure(HttpSecurity http) throws Exception {
+                    super.configure(http);
+                }
+
+                @Bean // criptografar o password
+                public PasswordEncoder passwordEncoder() {
+                     return new BCryptPasswordEncoder(); // Gera uma hash com a senha criptografada
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
