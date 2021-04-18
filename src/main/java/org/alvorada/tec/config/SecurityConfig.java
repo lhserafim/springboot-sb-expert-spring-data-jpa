@@ -32,11 +32,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // Desabilito pq estou usando api stateless
                 .authorizeRequests()
                 .antMatchers("/api/clientes-rest-controller/**") // Todas as URLs que vierem a partir deste path
-                //.permitAll(); // Dar acesso geral ao antMatchers informado
-                .authenticated() // Se vc estiver autenticado ele da acesso (independente da role e authority)
-                //.hasRole("USER")// Apenas que tiver a role
-                //.hasAuthority() // Apenas quem tiver a autorização (que fica dentro das roles)
-                .and() // Toda vez que eu quiser voltar p/ a raiz (para o http) eu uso este and()
+                    //.permitAll(); // Dar acesso geral ao antMatchers informado
+                    //.authenticated() // Se vc estiver autenticado ele da acesso (independente da role e authority)
+                    .hasAnyRole("USER", "ADMIN")// Apenas que tiver a role
+                    //.hasAuthority() // Apenas quem tiver a autorização (que fica dentro das roles)
+                .antMatchers("/api/pedidos-rest-controller/**")
+                    .hasRole("USER")
+                .antMatchers("/api/produtos-rest-controller/**")
+                    .hasRole("PRODUCAO")
+            .and() // Toda vez que eu quiser voltar p/ a raiz (para o http) eu uso este and()
                 .formLogin(); // se quiser, posso definir um formulário de login customizado
     }
 }
