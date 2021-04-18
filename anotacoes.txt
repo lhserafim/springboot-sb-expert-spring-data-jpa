@@ -386,7 +386,13 @@
                      return new BCryptPasswordEncoder(); // Gera uma hash com a senha criptografada
                 }
         27.2.4. Configurando a autenticação em memória (porque estou usando um H2)
-
+        27.2.5. No método void configure(HttpSecurity http) eu faço a definição das URLs que eu vou autorizar
+                e também o tipo da autenticação, por exemplo por formulário ou básica.
+    27.3. Fazendo a configuração para recuperar usuários de uma base de dados
+        27.3.1. Criar a classe UserServiceImpl, anotar com @Service, implementar UserDetailsService e seu método
+            27.3.1.1. Essa interface serve para recuperar usuários de uma base de dados
+        27.3.2. Injetar este service UserServiceImpl em SecurityConfig e configurar o método void configure(AuthenticationManagerBuilder auth)
+        27.3.3. Voltar na UserServiceImpl e no método criado, recuperar o usuário da base, seu perfil e criptografar a senha
 
 
 
