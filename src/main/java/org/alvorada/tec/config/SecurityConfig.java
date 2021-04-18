@@ -25,8 +25,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER"); // definindo o perfil do usuário
     }
 
-    @Override // Para autorizar
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+//        super.configure(http); // Configuração padrão. Bloqueia tudo!
+        http
+                .csrf().disable() // Desabilito pq estou usando api stateless
+                .authorizeRequests()
+                .antMatchers("/api/clientes-rest-controller/**") // Todas as URLs que vierem a partir deste path
+                //.permitAll(); // Dar acesso geral ao antMatchers informado
+                .authenticated() // Se vc estiver autenticado ele da acesso (independente da role e authority)
+                //.hasRole("USER")// Apenas que tiver a role
+                //.hasAuthority() // Apenas quem tiver a autorização (que fica dentro das roles)
+                .and() // Toda vez que eu quiser voltar p/ a raiz (para o http) eu uso este and()
+                .formLogin(); // se quiser, posso definir um formulário de login customizado
     }
 }
