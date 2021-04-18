@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder()) // Passando o enconder
                 .withUser("fulano") // Definindo o usuário
                 .password(passwordEncoder().encode("123")) // definindo e criptografando a senha
-                .roles("USER"); // definindo o perfil do usuário
+                .roles("USER", "PRODUCAO"); // definindo o perfil do usuário
     }
 
     @Override
@@ -39,8 +39,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/pedidos-rest-controller/**")
                     .hasRole("USER")
                 .antMatchers("/api/produtos-rest-controller/**")
-                    .hasRole("PRODUCAO")
+                    .hasAnyRole("USER", "PRODUCAO")
             .and() // Toda vez que eu quiser voltar p/ a raiz (para o http) eu uso este and()
-                .formLogin(); // se quiser, posso definir um formulário de login customizado
+                //.formLogin(); // Formulário de login. se quiser, posso definir um formulário de login customizado
+                .httpBasic(); // Outra forma de autenticação
     }
 }
