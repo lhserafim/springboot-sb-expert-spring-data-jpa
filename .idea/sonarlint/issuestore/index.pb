@@ -65,3 +65,7 @@ Dsrc/main/java/org/alvorada/tec/config/InternacionalizacaoConfig.java,a/b/ab81c
 Osrc/main/java/org/alvorada/tec/validation/constraint/NotEmptyListValidator.java,a/1/a145e808fdebe2d823ecc186f897a888d0a66b1c
 k
 ;src/main/java/org/alvorada/tec/validation/NotEmptyList.java,f/1/f11c95c27aa43fcc9437cbefcc6612c389871f58
+i
+9src/main/java/org/alvorada/tec/config/SecurityConfig.java,5/d/5de1fe5cfaf844c2650e599f398956d719918280
+p
+@src/main/java/org/alvorada/tec/service/impl/UserServiceImpl.java,4/e/4e7fbddd1abec921a8e6e4ac9cc9df8fec2c6ce5

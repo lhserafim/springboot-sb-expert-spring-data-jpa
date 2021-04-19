@@ -1,17 +1,17 @@
 
 b
-java:S46844"@Replace this persistent entity with a simple POJO or DTO object.(øéÓıûÿÿÿÿ8Œù×¬/
-]	java:S125."<This block of commented-out lines of code should be removed.(·üŠëùÿÿÿÿ8™É‚­/
-X	java:S125%"<This block of commented-out lines of code should be removed.(‹ËÏö8ºÌ¶¬/
-b
 java:S4684b"@Replace this persistent entity with a simple POJO or DTO object.(“ãÈşÿÿÿÿ8¯ÅŠ°/
-b
-java:S4684k"@Replace this persistent entity with a simple POJO or DTO object.(’ƒŸÍşÿÿÿÿ8•È°/
-]
-java:S46849"@Replace this persistent entity with a simple POJO or DTO object.(Šµ‹º8Äş•­/
-u
-java:S1192"XDefine a constant instead of duplicating this literal "Produto nÃ£o encontrado" 4 times.(£¹Ÿë8ä©²/
+]	java:S125."<This block of commented-out lines of code should be removed.(·üŠëùÿÿÿÿ8™É‚­/
 Q
 java:S2201E"/The return value of "orElseThrow" must be used.(”ëˆâùÿÿÿÿ8ö¹£²/
+X	java:S125%"<This block of commented-out lines of code should be removed.(‹ËÏö8ºÌ¶¬/
+]
+java:S46849"@Replace this persistent entity with a simple POJO or DTO object.(Šµ‹º8Äş•­/
+b
+java:S4684k"@Replace this persistent entity with a simple POJO or DTO object.(’ƒŸÍşÿÿÿÿ8•È°/
+b
+java:S46844"@Replace this persistent entity with a simple POJO or DTO object.(øéÓıûÿÿÿÿ8Œù×¬/
 b
 java:S4684V"@Replace this persistent entity with a simple POJO or DTO object.(“ãÈşÿÿÿÿ8²‘Ó¯/
+u
+java:S1192"XDefine a constant instead of duplicating this literal "Produto nÃ£o encontrado" 4 times.(£¹Ÿë8ä©²/

@@ -1,15 +1,15 @@
 
-Q
-java:S22010"/The return value of "orElseThrow" must be used.(•åüìüÿÿÿÿ8ÅÁ¸/
-U
-java:S46846"@Replace this persistent entity with a simple POJO or DTO object.(®x
 [
-java:S4684$"@Replace this persistent entity with a simple POJO or DTO object.(¤ÎÒøÿÿÿÿ
-z
-java:S1192"XDefine a constant instead of duplicating this literal "Cliente nÃ£o encontrado" 3 times.(•åüìüÿÿÿÿ8ÿä‹/
-E
-java:S3740B"/Provide the parametrized type for this generic.(“¢Éì
+java:S4684@"@Replace this persistent entity with a simple POJO or DTO object.(¥Ñƒıüÿÿÿÿ
 L
 java:S2201<"/The return value of "orElseThrow" must be used.(µ‚íµ8ÅÁ¸/
 [
-java:S4684@"@Replace this persistent entity with a simple POJO or DTO object.(¥Ñƒıüÿÿÿÿ
+java:S4684$"@Replace this persistent entity with a simple POJO or DTO object.(¤ÎÒøÿÿÿÿ
+U
+java:S46846"@Replace this persistent entity with a simple POJO or DTO object.(®x
+E
+java:S3740B"/Provide the parametrized type for this generic.(“¢Éì
+Q
+java:S22010"/The return value of "orElseThrow" must be used.(•åüìüÿÿÿÿ8ÅÁ¸/
+z
+java:S1192"XDefine a constant instead of duplicating this literal "Cliente nÃ£o encontrado" 3 times.(•åüìüÿÿÿÿ8ÿä‹/

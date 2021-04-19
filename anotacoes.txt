@@ -393,6 +393,19 @@
             27.3.1.1. Essa interface serve para recuperar usuários de uma base de dados
         27.3.2. Injetar este service UserServiceImpl em SecurityConfig e configurar o método void configure(AuthenticationManagerBuilder auth)
         27.3.3. Voltar na UserServiceImpl e no método criado, recuperar o usuário da base, seu perfil e criptografar a senha
+    27.4. Implementando o cadastro de usuários
+        27.4.1. Criar uma entidade Usuario, com as colunas necessárias para login e senha e fazer as anotações padrões de
+                entidade (inclusive valições)  e p/ usar o Lombok
+        27.4.2. Criar o repository, com o query methodo findByLogin()
+        27.4.3. Injetar o repository na UserServiceImpl, no método: UserDetails loadUserByUsername(String username)
+            27.4.4. Fazer o .build() do retorno do repository na entidade User. Obs: User implements UserDetails, CredentialsContainer
+        27.4.4. Criar o método .save() para salvar o Usuario
+        27.4.5. Criar o controller, colocar as anotações padrões @RestController, @RequestMapping() e @RequiredArgsConstructor
+                para evitar a criação do construtor
+            27.4.5.1. Injetar como final UsuarioServiceImpl. Final p/ poder usar a anotação @RequiredArgsConstructor do Lombok
+        27.4.6. Criar o método p/ salvar o usuario
+        27.4.7. Injetar o PasswordEncoder para criptografar a senha do usuário e salvar já criptografada na base
+
 
 
 
