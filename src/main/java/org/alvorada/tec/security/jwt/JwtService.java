@@ -1,4 +1,4 @@
-package org.alvorada.tec;
+package org.alvorada.tec.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -70,6 +70,7 @@ public class JwtService {
     }
 
     // Apenas para testar uma aplicação rodando uma aplicação Standalone
+    /*
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(VendasApplication.class);
         JwtService service = context.getBean(JwtService.class);
@@ -81,4 +82,5 @@ public class JwtService {
         System.out.println("O token está válido? " + isTokenValido);
         System.out.println(service.obterLoginUsuario(token));
     }
+     */
 }

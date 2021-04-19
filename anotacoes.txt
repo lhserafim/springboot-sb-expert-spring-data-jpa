@@ -413,8 +413,8 @@
                 String: expiração e chave de assinatura
         27.5.3. No arquivo application.properties, fazer a definição da expiração e da chave de assinatura
         DICA! Acessei o site: https://www.base64encode.org e gerei um encode p/ a palavra palmeiras: cGFsbWVpcmFz
-        26.5.4. Implementar o método que vai gerar o token para os usuários devidamente autenticados
-            26.5.4.1. Este método precisa consturir builder() um Jwts
+        27.5.4. Implementar o método que vai gerar o token para os usuários devidamente autenticados
+            27.5.4.1. Este método precisa consturir builder() um Jwts
                       Ex.:
                       return Jwts
                                       .builder()
@@ -422,7 +422,15 @@
                                       .setExpiration(data)
                                       .signWith(SignatureAlgorithm.HS512, chaveAssinatura)
                                       .compact();
-        26.5.5. Obtendo os claims do token
+        27.5.5. Obtendo os claims do token
+    27.6. Implementar a classe JwtAuthFilter, conforme exemplo
+    27.7. Atualizar a classe securityConfig
+    RESUMO DA IMPLEMENTAÇÃO DO JWT
+    - Criar a classe JwtService, que faz a codificação e decodificação do TOKEN
+    - Depois a classe JwtAuthFilter para fazer a interceptação das requisições e obter o token do header, verificar se o token
+      é válido, obter os dados dos usuários e colocar dentro do contexto
+    - E por fim reconfiguramos a classe SecurityConfig para ele interceptar as requisições e colocar dentro do contexto
+      do spring security
 
 
 
