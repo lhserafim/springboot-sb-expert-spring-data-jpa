@@ -1,5 +1,7 @@
 package org.alvorada.tec;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.alvorada.tec.domain.entity.Usuario;
@@ -39,6 +41,34 @@ public class JwtService {
                 .compact();
     }
 
+    // Obtendo os claims de um token. Os CLAIMS são as informações do token
+    private Claims obterClaims(String token ) throws ExpiredJwtException {
+        return Jwts
+                .parser() // Vai decodificar o token
+                .setSigningKey(chaveAssinatura)
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    // Pegar o token e diz se ele está válido ou não
+    public boolean tokenValido( String token ){
+        try{
+            Claims claims = obterClaims(token);
+            Date dataExpiracao = claims.getExpiration();
+            LocalDateTime data =
+                    dataExpiracao.toInstant()
+                            .atZone(ZoneId.systemDefault()).toLocalDateTime();
+            return !LocalDateTime.now().isAfter(data);
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    // Diz qual é o usuário que mandou o token
+    public String obterLoginUsuario(String token) throws ExpiredJwtException{
+        return (String) obterClaims(token).getSubject();
+    }
+
     // Apenas para testar uma aplicação rodando uma aplicação Standalone
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(VendasApplication.class);
@@ -46,5 +76,9 @@ public class JwtService {
         Usuario usuario = Usuario.builder().login("fulano").build();
         String token = service.gerarToken(usuario);
         System.out.println(token);
+
+        boolean isTokenValido = service.tokenValido(token);
+        System.out.println("O token está válido? " + isTokenValido);
+        System.out.println(service.obterLoginUsuario(token));
     }
 }

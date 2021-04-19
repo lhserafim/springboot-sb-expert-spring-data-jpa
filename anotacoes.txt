@@ -415,6 +415,14 @@
         DICA! Acessei o site: https://www.base64encode.org e gerei um encode p/ a palavra palmeiras: cGFsbWVpcmFz
         26.5.4. Implementar o método que vai gerar o token para os usuários devidamente autenticados
             26.5.4.1. Este método precisa consturir builder() um Jwts
+                      Ex.:
+                      return Jwts
+                                      .builder()
+                                      .setSubject(usuario.getLogin())
+                                      .setExpiration(data)
+                                      .signWith(SignatureAlgorithm.HS512, chaveAssinatura)
+                                      .compact();
+        26.5.5. Obtendo os claims do token
 
 
 
