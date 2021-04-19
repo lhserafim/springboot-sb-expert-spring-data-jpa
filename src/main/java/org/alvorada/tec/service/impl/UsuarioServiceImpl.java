@@ -2,6 +2,7 @@ package org.alvorada.tec.service.impl;
 
 import org.alvorada.tec.domain.entity.Usuario;
 import org.alvorada.tec.domain.repository.UsuarioRepository;
+import org.alvorada.tec.exception.SenhaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +26,18 @@ public class UsuarioServiceImpl implements UserDetailsService {
         return usuarioRepository.save(usuario);
     }
 
+    // validar as senhas da autenticacao
+    public UserDetails autenticar( Usuario usuario ){
+        UserDetails user = loadUserByUsername(usuario.getLogin());
+        boolean senhasBatem = encoder.matches( usuario.getSenha(), user.getPassword() );
+
+        if(senhasBatem){
+            return user;
+        }
+
+        throw new SenhaInvalidaException();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario =  usuarioRepository.findByLogin(username)
@@ -33,7 +46,7 @@ public class UsuarioServiceImpl implements UserDetailsService {
         // Retornando as roles através de lógica. Na pratica não é assim
         // usando o isAdmin() que o Lombook implementa
         String[] roles = usuario.isAdmin() ?
-                new String[]{"PRODUCAO", "USER"} : new String[]{"USER"};
+                new String[]{"ADMIN", "USER"} : new String[]{"USER"};
 
         return User // User implements UserDetails, CredentialsContainer
                 .builder()

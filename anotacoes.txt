@@ -425,13 +425,14 @@
         27.5.5. Obtendo os claims do token
     27.6. Implementar a classe JwtAuthFilter, conforme exemplo
     27.7. Atualizar a classe securityConfig
+    27.8. Criar o endpoint na controller p/ autenticar o usuário e gerar o token
     RESUMO DA IMPLEMENTAÇÃO DO JWT
     - Criar a classe JwtService, que faz a codificação e decodificação do TOKEN
     - Depois a classe JwtAuthFilter para fazer a interceptação das requisições e obter o token do header, verificar se o token
       é válido, obter os dados dos usuários e colocar dentro do contexto
     - E por fim reconfiguramos a classe SecurityConfig para ele interceptar as requisições e colocar dentro do contexto
       do spring security
-
+    - Implentar a controller para autenticar o usuário
 
 
 
