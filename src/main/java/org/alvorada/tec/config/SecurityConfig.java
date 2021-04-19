@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // Desabilito pq estou usando api stateless
                 .authorizeRequests()
                 .antMatchers("/api/clientes-rest-controller/**") // Todas as URLs que vierem a partir deste path
-                    //.permitAll(); // Dar acesso geral ao antMatchers informado
+                    //.permitAll() // Dar acesso geral ao antMatchers informado
                     //.authenticated() // Se vc estiver autenticado ele da acesso (independente da role e authority)
                     .hasAnyRole("USER", "ADMIN")// Apenas que tiver a role
                     //.hasAuthority() // Apenas quem tiver a autorização (que fica dentro das roles)

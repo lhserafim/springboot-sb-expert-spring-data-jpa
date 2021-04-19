@@ -405,6 +405,18 @@
             27.4.5.1. Injetar como final UsuarioServiceImpl. Final p/ poder usar a anotação @RequiredArgsConstructor do Lombok
         27.4.6. Criar o método p/ salvar o usuario
         27.4.7. Injetar o PasswordEncoder para criptografar a senha do usuário e salvar já criptografada na base
+        27.4.8. Na controller, criar um método para recuperar o usuário pelo repository e fazer o build retornando um User
+        DICA! https://www.baeldung.com/spring-security-authentication-with-a-database
+    27.5. Implementação do JSON WEB TOKEN (JWT)
+        27.5.1. Adicionar a dependência ao pom.xml
+        27.5.2. Criar uma classe para gerar o token JwtService e anotar com o @Service e criar duas propriedades do tipo
+                String: expiração e chave de assinatura
+        27.5.3. No arquivo application.properties, fazer a definição da expiração e da chave de assinatura
+        DICA! Acessei o site: https://www.base64encode.org e gerei um encode p/ a palavra palmeiras: cGFsbWVpcmFz
+        26.5.4. Implementar o método que vai gerar o token para os usuários devidamente autenticados
+            26.5.4.1. Este método precisa consturir builder() um Jwts
+
+
 
 
 

@@ -1,3 +1,7 @@
 
-Z
-java:S5344">Don't use the default "PasswordEncoder" relying on plain-text.(š¼‚28Á·¥/
+˜
+java:S1128"vRemove this unused import 'org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy'.(™×ºúÿÿÿÿ8â ÖÌ/
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8â ÖÌ/
+
+java:S1128"sRemove this unused import 'org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter'.(è®„á8â ÖÌ/

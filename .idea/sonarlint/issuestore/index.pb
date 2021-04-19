@@ -67,5 +67,11 @@ k
 ;src/main/java/org/alvorada/tec/validation/NotEmptyList.java,f/1/f11c95c27aa43fcc9437cbefcc6612c389871f58
 i
 9src/main/java/org/alvorada/tec/config/SecurityConfig.java,5/d/5de1fe5cfaf844c2650e599f398956d719918280
-p
-@src/main/java/org/alvorada/tec/service/impl/UserServiceImpl.java,4/e/4e7fbddd1abec921a8e6e4ac9cc9df8fec2c6ce5
+i
+9src/main/java/org/alvorada/tec/domain/entity/Usuario.java,f/c/fc4b1ef089c3673ecc5d7c7a11e5c41fa85a59e7
+u
+Esrc/main/java/org/alvorada/tec/rest/controller/UsuarioController.java,4/9/495be40bea2608a4e637a3bc2018a96a2fa0c303
+w
+Gsrc/main/java/org/alvorada/tec/domain/repository/UsuarioRepository.java,4/8/48c1b114babf758bc3aa9c1c5c6c408edcda927e
+s
+Csrc/main/java/org/alvorada/tec/service/impl/UsuarioServiceImpl.java,8/d/8d657628816f3fc8d8ecc33adecca2ac0bea33b1
