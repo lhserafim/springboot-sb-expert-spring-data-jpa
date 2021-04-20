@@ -81,3 +81,5 @@ n
 >src/main/java/org/alvorada/tec/security/jwt/JwtAuthFilter.java,2/d/2dbd71808adcad8da860ccc205541637afa4f24a
 k
 ;src/main/java/org/alvorada/tec/security/jwt/JwtService.java,c/3/c325684cf4c7b4cb0ceeffa5a1f1c1166fff0453
+h
+8src/main/java/org/alvorada/tec/config/SwaggerConfig.java,9/a/9a7e759266b219eacb65dd86e31971f00f2b063a

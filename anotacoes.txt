@@ -450,7 +450,14 @@ Repositório do curso: https://github.com/cursodsousa/curso-spring-boot-especial
 ------------------------------------------------------------------------------------------------------------------------
                                     Configurando o SWAGGER
 ------------------------------------------------------------------------------------------------------------------------
-
+29. Configurando o SWAGGER
+    29.1. Adicionar as dependências do Swagger
+    29.2. Criar a classe SwaggerConfig
+    29.3. Adicionar as configurações de exceção no arquivo SecurityConfig, para "liberar" o Swagger
+    29.4. Acessar http://localhost:8080/swagger-ui.html
+    29.5. Clicar no cadeado e passar Bearer e o token
+          Ex.:
+          Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdHJpbmciLCJleHAiOjE2MTg5MjQ0NzR9.18uzDymvmNM1fMr5ld_agIqruNyIzut_pZeYU80EXQlHP1ZsDux5fh4aX5LAjBp5rfT_7xBcUMkZqQBvYFFlDg
 
 
 

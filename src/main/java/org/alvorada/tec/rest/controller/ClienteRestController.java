@@ -1,5 +1,6 @@
 package org.alvorada.tec.rest.controller;
 
+import io.swagger.annotations.*;
 import org.alvorada.tec.domain.entity.Cliente;
 import org.alvorada.tec.domain.repository.ClientesRepository;
 import org.springframework.data.domain.Example;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes-rest-controller")
+@Api("Api Clientes") // Exclusivo do Swagger apenas p/ documentação
 public class ClienteRestController {
 
     // Injetando o repository na controller
@@ -24,7 +26,13 @@ public class ClienteRestController {
 
     @GetMapping("consulta-cliente-id/{id}") // Refatorando sem ResponseEntity
     // Não preciso do @ResponseStatus, pois quando não tem nada informado, por padrão já volta 200
-    public Cliente getClienteById(@PathVariable Integer id) {
+    @ApiOperation("Obter detalhes de um cliente") // Exclusivo do Swagger apenas p/ documentação
+    @ApiResponses({ // Exclusivo do Swagger apenas p/ documentação
+            @ApiResponse(code = 200, message = "Cliente encontrado"),
+            @ApiResponse(code = 404, message = "Cliente não encontrado para o ID informado")})
+    public Cliente getClienteById(
+            @PathVariable
+            @ApiParam("Id do cliente") Integer id ){
         return clientesRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
