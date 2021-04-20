@@ -51,7 +51,7 @@ public class UsuarioServiceImpl implements UserDetailsService {
         return User // User implements UserDetails, CredentialsContainer
                 .builder()
                 .username(usuario.getLogin())
-                .username(usuario.getSenha()) // Não preciso do .password(encoder.encode("123")), pois a senha já esta criptografada na base
+                .password(usuario.getSenha()) // Não preciso do .password(encoder.encode("123")), pois a senha já esta criptografada na base
                 .roles(roles)
                 .build();
     }
