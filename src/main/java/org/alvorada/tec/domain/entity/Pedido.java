@@ -19,7 +19,8 @@ import java.util.List;
 public class Pedido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO) // padrão H2
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // padrao MySQL
     @Column(name = "id")
     private Integer id;
 

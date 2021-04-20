@@ -435,9 +435,21 @@ Repositório do curso: https://github.com/cursodsousa/curso-spring-boot-especial
     - E por fim reconfiguramos a classe SecurityConfig para ele interceptar as requisições e colocar dentro do contexto
       do spring security
     - Implentar a controller para autenticar o usuário
-
-
-
+------------------------------------------------------------------------------------------------------------------------
+                                    MIGRANDO PARA O MySQL
+------------------------------------------------------------------------------------------------------------------------
+28. Fazendo a migração para o banco MySQL e deixando o H2 para testes
+    28.1. Duplicar o arquivo application.properties e renomeá-lo como application-test.properties. O arquivo test será mantido
+          como H2
+    28.2. Alterar as propriedades do application.properties para fazer a conexão com o BD
+    28.3. Alterar a estratégia de geração de sequence de @GeneratedValue(strategy = GenerationType.AUTO) para
+          @GeneratedValue(strategy = GenerationType.IDENTITY)
+    28.4. Criado o arquivo application.yml, onde eu defino entre outras coisas qual perfil está ativo.
+          Ex.:
+          active: test
+------------------------------------------------------------------------------------------------------------------------
+                                    Configurando o SWAGGER
+------------------------------------------------------------------------------------------------------------------------
 
 
 

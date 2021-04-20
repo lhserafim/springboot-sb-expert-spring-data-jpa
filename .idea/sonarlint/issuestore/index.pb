@@ -75,3 +75,9 @@ w
 Gsrc/main/java/org/alvorada/tec/domain/repository/UsuarioRepository.java,4/8/48c1b114babf758bc3aa9c1c5c6c408edcda927e
 s
 Csrc/main/java/org/alvorada/tec/service/impl/UsuarioServiceImpl.java,8/d/8d657628816f3fc8d8ecc33adecca2ac0bea33b1
+k
+;src/main/java/org/alvorada/tec/rest/dto/CredenciaisDTO.java,3/c/3c02a4d834eeebb2e0fa523cf9c2ccc14fa38705
+n
+>src/main/java/org/alvorada/tec/security/jwt/JwtAuthFilter.java,2/d/2dbd71808adcad8da860ccc205541637afa4f24a
+k
+;src/main/java/org/alvorada/tec/security/jwt/JwtService.java,c/3/c325684cf4c7b4cb0ceeffa5a1f1c1166fff0453
