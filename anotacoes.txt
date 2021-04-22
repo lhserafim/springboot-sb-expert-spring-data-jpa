@@ -318,6 +318,7 @@ Repositório do curso: https://github.com/cursodsousa/curso-spring-boot-especial
             </dependency>
     26.2. Na entidade colocar a anotação desejada p/ validar o atributo. @NotEmpty(message = "O campo nome é obrigatório")
     26.3. No controller, adicionar a anotação @Valid no método que eu quero validar o atributo
+    DICA! Para poder colocar validação nos itens da lista, preciso anotar com o @Valid o atributo
     IMPORTANTE! O @Valid precisa estar antes do nome da Entidade que estou validando
           Ex.:
           @RequestBody @Valid Produto produto

@@ -32,6 +32,7 @@ public class PedidoDTO {
     @NotNull(message = "Informe o valor total do pedido")
     private BigDecimal total;
     @NotEmptyList(message = "Pedido não pode ser criado sem itens")
+    //@Valid // Para poder colocar validação nos itens da lista, preciso anotar com o @Valid
     private List<ItemPedidoDto> items;
 
 }

@@ -1,13 +1,11 @@
 
-]	java:S125>"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8¤Œ­öŽ/
-˜
-java:S1128"vRemove this unused import 'org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy'.(™ž×ºúÿÿÿÿ8¤Œ­öŽ/
-h
-java:S1192F"FDefine a constant instead of duplicating this literal "ADMIN" 3 times.(¹¥±ùÿÿÿÿÿ8¤Œ­öŽ/
-]	java:S1253"<This block of commented-out lines of code should be removed.(óœ™Óúÿÿÿÿ8¤Œ­öŽ/
 O
 java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8¤Œ­öŽ/
+˜
+java:S1128"vRemove this unused import 'org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy'.(™ž×ºúÿÿÿÿ8¤Œ­öŽ/
 
 java:S1128"sRemove this unused import 'org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter'.(è®„á8¤Œ­öŽ/
+]	java:S125>"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8¤Œ­öŽ/
 >
 java:S1116S"Remove this empty statement.(Åñ­õþÿÿÿÿ8¤Œ­öŽ/
+]	java:S1253"<This block of commented-out lines of code should be removed.(óœ™Óúÿÿÿÿ8¤Œ­öŽ/

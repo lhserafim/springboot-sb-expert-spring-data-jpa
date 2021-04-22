@@ -71,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/pedidos-rest-controller/**")
                 .hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/produtos-rest-controller/**")
-                .hasRole("ADMIN")
+                .hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/api/usuarios-rest-controller/**")
                 .permitAll()
                 .anyRequest().authenticated()

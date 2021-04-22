@@ -1,7 +1,7 @@
 
-_
-java:S1128"CRemove this unused import 'org.alvorada.tec.domain.entity.Cliente'.(ôŞ08Í¸¤Ğ/
-`
-java:S1128"CRemove this unused import 'org.alvorada.tec.domain.entity.Produto'.(Ç€†å8è¹áÏ/
 L
 java:S2201^"/The return value of "orElseThrow" must be used.(˜ùÎÜ8°õ°‰/
+`
+java:S1128"CRemove this unused import 'org.alvorada.tec.domain.entity.Produto'.(Ç€†å8è¹áÏ/
+_
+java:S1128"CRemove this unused import 'org.alvorada.tec.domain.entity.Cliente'.(ôŞ08Í¸¤Ğ/
